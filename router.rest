@@ -1,0 +1,90 @@
+GET http://localhost:3000/api/sign-up
+
+###
+
+GET http://localhost:3000/api/sign-up/13
+
+###
+
+POST http://localhost:3000/api/sign-up
+Content-Type: application/json
+
+{
+    "firstName": "Bruno",
+    "lastName": "Fuentes3",
+    "email": "bruno@gmail.com.br",
+    "username": "brunofuentessss",
+    "restaurant_id": "1"
+}
+
+###
+
+PUT http://localhost:3000/api/sign-up/13
+Content-Type: application/json
+
+{
+    "id": 13,
+    "firstName": "Test",
+    "lastName": "Fuentes",
+    "email": "bruno@gmail.com.br",
+    "username": "brunofuentes",
+    "restaurant_id": "1"
+}
+
+###
+
+DELETE http://localhost:3000/api/sign-up/
+
+###
+
+GET http://localhost:3000/api/restaurants
+
+###
+
+GET http://localhost:3000/api/restaurants/1
+
+###
+
+POST http://localhost:3000/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "Padoca Veronese 2",
+    "description": "Os melhores paes de fermentacao natural da cidade!",
+    "slug": "padoca-veronese",
+    "address": "Floripa, Brasil",
+    "phone": "+55(48)",
+    "imageUrl": "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmFrZXJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
+    "websiteUrl": "test",
+    "instagramUrl": "test",
+    "facebookUrl": "test"
+}
+
+###
+
+DELETE http://localhost:3000/api/restaurants/2
+
+###
+
+GET http://localhost:3000/api/items
+
+###
+
+POST http://localhost:3000/api/items
+Content-Type: application/json
+
+{
+    "name": "Testando item para restaurant 2",
+    "description": "Farinha tipo gebana, água e fermento caseiro.",
+    "price": "59.90",
+    "section": "Paes",
+    "imageUrl": "https://images.unsplash.com/photo-1603984042729-a34adc2ac9d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aXRhbGlhbiUyMGJyZWFkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
+    "categories": ["Farinha Gebana", "Sem Glúten"],
+    "restaurant_id": 2
+}
+
+###
+
+GET http://localhost:3000/api/2/items
+
+###
