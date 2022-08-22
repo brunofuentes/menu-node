@@ -8,7 +8,6 @@ A simple menu application.
 - [Express.js](https://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
 - [PostgreSQL](https://www.postgresql.org/)
--
 
 ### Sequelize Migrations:
 
