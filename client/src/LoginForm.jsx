@@ -1,5 +1,5 @@
-import React from "react"
-import { useForm } from "react-hook-form"
+import React from 'react'
+import { useForm } from 'react-hook-form'
 
 function LoginForm() {
 	const {
@@ -8,10 +8,10 @@ function LoginForm() {
 		formState: { errors },
 	} = useForm()
 	const onSubmit = (data) => {
-		fetch("/api/sign-up", {
-			method: "POST",
+		fetch('/api/sign-up', {
+			method: 'POST',
 			headers: {
-				"Content-Type": "application/json",
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
 				email: data.email,
@@ -19,7 +19,7 @@ function LoginForm() {
 			}),
 		})
 			.then((res) => res.json())
-			.catch((err) => console.log("error, ", err))
+			.catch((err) => console.log('error, ', err))
 	}
 	return (
 		<div className="flex flex-col min-h-screen bg-gray-50 justify-center">
@@ -41,12 +41,12 @@ function LoginForm() {
 							Email
 						</label>
 						<input
-							{...register("email", {
+							{...register('email', {
 								required: true,
 								minLength: 6,
 								maxLength: 100,
 							})}
-							style={{ borderColor: errors.email ? "red" : "" }}
+							style={{ borderColor: errors.email ? 'red' : '' }}
 							type="text"
 							className="w-full p-2 border border-gray-300 rounded mt-1"></input>
 						{errors.email && <span>Email invalid</span>}
@@ -58,9 +58,9 @@ function LoginForm() {
 							Password
 						</label>
 						<input
-							{...register("password", { required: true })}
+							{...register('password', { required: true })}
 							style={{
-								borderColor: errors.password ? "red" : "",
+								borderColor: errors.password ? 'red' : '',
 							}}
 							type="password"
 							className="w-full p-2 border border-gray-300 rounded mt-1"></input>
