@@ -17,11 +17,11 @@ app.use('/api', user)
 app.use('/api', restaurant)
 app.use('/api', item)
 
-app.get('/', (req, res) => {
-    res.json({ message: 'App is running'})
+app.get('/api', (req, res) => {
+    res.json({ message: 'Hello from server'})
 })
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`)
 })
