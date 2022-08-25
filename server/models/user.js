@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING,
 				unique: true,
 			},
+			password: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
 			restaurant_id: {
 				type: DataTypes.INTEGER,
 			},
