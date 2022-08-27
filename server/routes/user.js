@@ -1,36 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const {
-    signUp,
-    updateSignUp,
-    getAllUsers,
-    getSingleUser,
-    deleteSingleUser,
-    deleteAllUsers,
-} = require('../controllers/user')
+const passport = require('passport')
+const { signUp, signIn, updateUser, getAllUsers, getSingleUser, deleteSingleUser, deleteAllUsers } = require('../controllers/user')
 
-router.post('/sign-up',
-    signUp
-)
+router.post('/sign-up', signUp)
 
-router.put('/sign-up/:id',
-    updateSignUp
-)
+router.post('/sign-in', signIn)
 
-router.get('/sign-up/',
-    getAllUsers
-)
+router.put('/sign-up/:id', updateUser)
 
-router.get('/sign-up/:id',
-    getSingleUser
-)
+router.get('/sign-up/', getAllUsers)
 
-router.delete('/sign-up/:id',
-    deleteSingleUser
-)
+router.get('/sign-up/:id', getSingleUser)
 
-router.delete('/sign-up/',
-    deleteAllUsers
-)
+router.delete('/sign-up/:id', deleteSingleUser)
+
+router.delete('/sign-up/', deleteAllUsers)
 
 module.exports = router
