@@ -1,15 +1,19 @@
 const User = require('../models').User
+const bcrypt = require('bcrypt')
+const passport = require('passport')
 
 module.exports = {
 	// create account
 	signUp: async (req, res) => {
-		let { firstName, lastName, email, username, restaurant_id } = req.body
+		let { firstName, lastName, email, username, password, restaurant_id } = req.body
 		try {
+			const hashedPassword = await bcrypt.hash(password, 10)
 			let newUser = await User.create({
 				firstName,
 				lastName,
 				email,
 				username,
+				password: hashedPassword,
 				restaurant_id,
 			})
 			return res.status(201).json({
@@ -21,7 +25,37 @@ module.exports = {
 		}
 	},
 
-	updateSignUp: async (req, res) => {
+	signIn: async (req, res) => {
+		try {
+			let user = await User.findOne({
+				where: { email: req.body.email },
+			})
+			if (!user) {
+				return res.status(404).send({
+					message: 'User not found',
+				})
+			}
+			if (user) {
+				const match = await bcrypt.compare(req.body.password, user.password)
+				if (!match) {
+					return res.status(403).send({
+						message: 'Incorrect email or password.',
+					})
+				}
+				if (match) {
+					return res.status(200).send({
+						id: user.id,
+						username: user.username,
+						email: user.email,
+					})
+				}
+			}
+		} catch (err) {
+			return res.status(500).send({ message: err.message })
+		}
+	},
+
+	updateUser: async (req, res) => {
 		let { firstName, lastName, email, username, restaurant_id } = req.body
 		let id = req.params.id
 		try {
@@ -55,14 +89,7 @@ module.exports = {
 	getAllUsers: async (req, res) => {
 		try {
 			let users = await User.findAll({
-				attributes: [
-					'id',
-					'firstName',
-					'lastName',
-					'email',
-					'username',
-					'restaurant_id',
-				],
+				attributes: ['id', 'firstName', 'lastName', 'email', 'username', 'restaurant_id'],
 				limit: 5,
 				order: [['id', 'DESC']],
 			})
