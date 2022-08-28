@@ -1,8 +1,12 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const user = require('./routes/user')
 const restaurant = require('./routes/restaurant')
 const item = require('./routes/item')
+const cors = require('cors')
+const allowedOrigins = require('./config/allowedOrigins')
+const passport = require('passport')
 
 const app = express()
 
