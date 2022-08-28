@@ -2,3 +2,4 @@
 router.rest
 node_modules
 config
+constants.js
