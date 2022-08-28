@@ -1,9 +1,9 @@
+const { PRIVATE_KEY } = require('../utils/constants')
 const User = require('../models').User
 const bcrypt = require('bcrypt')
-const passport = require('passport')
+const jwt = require('jsonwebtoken')
 
 module.exports = {
-	// create account
 	signUp: async (req, res) => {
 		let { firstName, lastName, email, username, password, restaurant_id } = req.body
 		try {
@@ -17,11 +17,22 @@ module.exports = {
 				restaurant_id,
 			})
 			return res.status(201).json({
+				success: true,
 				message: 'User created successfully',
-				newUser,
+				newUser: {
+					firstName: newUser.firstName,
+					lastName: newUser.lastName,
+					email: newUser.email,
+					username: newUser.username,
+					restaurant_id: newUser.restaurant_id,
+				},
 			})
 		} catch (err) {
-			return res.status(500).json({ err })
+			return res.status(500).json({
+				success: false,
+				message: 'Something went wrong',
+				error: err,
+			})
 		}
 	},
 
@@ -32,6 +43,7 @@ module.exports = {
 			})
 			if (!user) {
 				return res.status(404).send({
+					success: false,
 					message: 'User not found',
 				})
 			}
@@ -39,16 +51,26 @@ module.exports = {
 				const match = await bcrypt.compare(req.body.password, user.password)
 				if (!match) {
 					return res.status(403).send({
+						success: false,
 						message: 'Incorrect email or password.',
 					})
 				}
-				if (match) {
-					return res.status(200).send({
-						id: user.id,
-						username: user.username,
-						email: user.email,
-					})
+				const payload = {
+					id: user.id,
+					username: user.username,
+					email: user.email,
 				}
+
+				const token = jwt.sign(payload, PRIVATE_KEY, { expiresIn: '1d' })
+
+				return res.status(200).send({
+					success: true,
+					message: 'Logged in successfully!',
+					id: user.id,
+					username: user.username,
+					email: user.email,
+					token: 'Bearer ' + token,
+				})
 			}
 		} catch (err) {
 			return res.status(500).send({ message: err.message })
