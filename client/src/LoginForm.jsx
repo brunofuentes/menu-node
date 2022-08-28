@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
 
 function LoginForm() {
+	let navigate = useNavigate()
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm()
+
+	useEffect(() => {
+		const token = localStorage.getItem('token')
+		fetch('/api/protected', {
+			method: 'GET',
+			headers: {
+				Authorization: token,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => navigate('/dashboard'))
+			.catch((err) => {
+				navigate('/login')
+			})
+	}, [])
+
 	const onSubmit = (data) => {
-		fetch('/api/sign-up', {
+		fetch('/api/sign-in', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -19,25 +37,26 @@ function LoginForm() {
 			}),
 		})
 			.then((res) => res.json())
-			.catch((err) => console.log('error, ', err))
+			.then((user) => {
+				localStorage.setItem('token', user.token)
+				navigate('/dashboard')
+			})
+			.catch((err) => {
+				console.log(err)
+				navigate('/login')
+			})
 	}
+
 	return (
 		<div className="flex flex-col min-h-screen bg-gray-50 justify-center">
 			<div className="max-w-md w-full mx-auto">
-				<div className="text-xl font-medium text-center">something</div>
-				<div className="text-3xl font-bold text-gray-900 mt-2 text-center">
-					another text
-				</div>
+				<div className="text-xl font-medium text-center">Hi there,</div>
+				<div className="text-3xl font-bold text-gray-900 mt-2 text-center">Welcome back!</div>
 			</div>
 			<div className="max-w-md w-full mx-auto mt-4 bg-white p-8 rounded border border-gray-300">
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					action=""
-					className="space-y-6">
+				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
 					<div>
-						<label
-							htmlFor=""
-							className="text-sm font-bold text-gray-600 block">
+						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
 							Email
 						</label>
 						<input
@@ -48,13 +67,12 @@ function LoginForm() {
 							})}
 							style={{ borderColor: errors.email ? 'red' : '' }}
 							type="text"
-							className="w-full p-2 border border-gray-300 rounded mt-1"></input>
+							className="w-full p-2 border border-gray-300 rounded mt-1"
+						></input>
 						{errors.email && <span>Email invalid</span>}
 					</div>
 					<div>
-						<label
-							htmlFor=""
-							className="text-sm font-bold text-gray-600 block">
+						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
 							Password
 						</label>
 						<input
@@ -63,40 +81,31 @@ function LoginForm() {
 								borderColor: errors.password ? 'red' : '',
 							}}
 							type="password"
-							className="w-full p-2 border border-gray-300 rounded mt-1"></input>
+							className="w-full p-2 border border-gray-300 rounded mt-1"
+						></input>
 						{errors.password && <span>Invalid Password</span>}
 					</div>
 					<div className="flex items-center justify-between">
 						<div className="flex items-center">
-							<input
-								type="checkbox"
-								className="h-4 w-4 text-blue-300 rounded"></input>
-							<label
-								htmlFor=""
-								className="ml-2 text-sm text-gray-600">
+							<input type="checkbox" className="h-4 w-4 text-blue-300 rounded"></input>
+							<label htmlFor="" className="ml-2 text-sm text-gray-600">
 								Remember me
 							</label>
 						</div>
 						<div>
-							<a
-								href="/"
-								className="font-medium text-sm text-blue-500">
+							<a href="/" className="font-medium text-sm text-blue-500">
 								Forgot Password
 							</a>
 						</div>
 					</div>
 					<div>
-						<button
-							type="submit"
-							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white">
+						<button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white">
 							Submit
 						</button>
 					</div>
 					<div className="text-center">
 						<span>First time here? </span>
-						<a
-							href="/register"
-							className="text-blue-500 font-medium">
+						<a href="/register" className="text-blue-500 font-medium">
 							Register now.
 						</a>
 					</div>
