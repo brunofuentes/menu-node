@@ -3,12 +3,13 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 
 function LoginForm() {
-	let navigate = useNavigate()
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm()
+
+	let navigate = useNavigate()
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
@@ -23,9 +24,9 @@ function LoginForm() {
 			.catch((err) => {
 				navigate('/login')
 			})
-	}, [])
+	}, [navigate])
 
-	const onSubmit = (data) => {
+	function onSubmit(data) {
 		fetch('/api/sign-in', {
 			method: 'POST',
 			headers: {
@@ -38,8 +39,11 @@ function LoginForm() {
 		})
 			.then((res) => res.json())
 			.then((user) => {
-				localStorage.setItem('token', user.token)
-				navigate('/dashboard')
+				if (user.success) {
+					localStorage.setItem('token', user.token)
+					navigate('/dashboard')
+				}
+				return { message: user.message }
 			})
 			.catch((err) => {
 				console.log(err)
