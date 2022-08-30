@@ -59,6 +59,7 @@ module.exports = {
 					id: user.id,
 					username: user.username,
 					email: user.email,
+					restaurant_id: user.restaurant_id,
 				}
 
 				const token = jwt.sign(payload, PRIVATE_KEY, { expiresIn: '1d' })
@@ -69,6 +70,7 @@ module.exports = {
 					id: user.id,
 					username: user.username,
 					email: user.email,
+					restaurant_id: user.restaurant_id,
 					token: 'Bearer ' + token,
 				})
 			}
