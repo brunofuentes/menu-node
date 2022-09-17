@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
+import RestaurantData from './RestaurantData'
+import RestaurantForm from './RestaurantForm'
+import UserContext from './UserContext'
 
 function Dashboard() {
+	const { user } = useContext(UserContext)
+	const token = sessionStorage.getItem('token')
+
 	let navigate = useNavigate()
+
 	useEffect(() => {
-		const token = localStorage.getItem('token')
 		fetch('/api/protected', {
 			method: 'GET',
 			headers: {
@@ -16,11 +22,16 @@ function Dashboard() {
 			.catch((err) => {
 				navigate('/login')
 			})
-	})
+	}, [navigate])
 
 	return (
-		<div className="min-h-screen flex items-center justify-center text-3xl font-bold font-mono">
-			<h1>Dashboard Page! (Protected)</h1>
+		<div>
+			<div className="flex-col flex items-center justify-center text-3xl py-5">
+				<h1>Dashboard Page! (Protected)</h1>
+			</div>
+			<div className="p-3">
+				<RestaurantData />
+			</div>
 		</div>
 	)
 }
