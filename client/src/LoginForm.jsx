@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
+import UserContext from './UserContext'
 
 function LoginForm() {
+	const { saveUserInfo } = useContext(UserContext)
+
 	const {
 		register,
 		handleSubmit,
@@ -12,7 +15,7 @@ function LoginForm() {
 	let navigate = useNavigate()
 
 	useEffect(() => {
-		const token = localStorage.getItem('token')
+		const token = sessionStorage.getItem('token')
 		fetch('/api/protected', {
 			method: 'GET',
 			headers: {
@@ -40,7 +43,7 @@ function LoginForm() {
 			.then((res) => res.json())
 			.then((user) => {
 				if (user.success) {
-					localStorage.setItem('token', user.token)
+					saveUserInfo(user)
 					navigate('/dashboard')
 				}
 				return { message: user.message }
