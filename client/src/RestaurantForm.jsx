@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { GetRestaurant } from './api/restaurant'
+import { useNavigate } from 'react-router'
+import RestaurantContext from './RestaurantContext'
 
 function RestaurantForm() {
-	const [preloadedData, setPreloadedData] = useState({})
+	let navigate = useNavigate()
 
+	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
 	useEffect(() => {
-		fetch('/api/restaurants/1', {
-			method: 'GET',
-		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json()
-				}
-				throw res
-			})
-			.then((preloadedData) => {
-				setPreloadedData(preloadedData)
-			})
-			.catch((err) => {
-				console.error('Error fetching data ', err)
-			})
+		getRestaurantData()
 	}, [])
 
-	const restaurant = preloadedData?.restaurant
+	useEffect(() => {
+		const token = sessionStorage.getItem('token')
+		fetch('/api/protected', {
+			method: 'GET',
+			headers: {
+				Authorization: token,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {})
+			.catch((err) => {
+				navigate('/login')
+			})
+	}, [navigate])
 
 	const {
 		register,
@@ -33,10 +34,11 @@ function RestaurantForm() {
 
 	const onSubmit = (data) => {
 		console.log(data)
+		navigate('/dashboard')
 	}
 
 	return (
-		<section className="text-sm w-1/2">
+		<section className="text-sm w-1/2 mx-auto">
 			<p className="text-xl font-bold text-center p-2">Restaurant Details</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
 				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
@@ -49,7 +51,7 @@ function RestaurantForm() {
 								maxLength: 140,
 							})}
 							style={{ borderColor: errors.imageUrl ? 'red' : '' }}
-							defaultValue={restaurant?.imageUrl}
+							// defaultValue={restaurant?.imageUrl}
 							type="file"
 							className=" w-full p-2mt-1"
 						></input>
