@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import RestaurantContext from './RestaurantContext'
 
-function RestaurantData({ props }) {
+function RestaurantData() {
 	const navigate = useNavigate()
 	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
 	useEffect(() => {
