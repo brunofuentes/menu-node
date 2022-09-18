@@ -1,0 +1,4 @@
+td,
+th {
+	@apply px-2 border;
+}
