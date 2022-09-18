@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
+import MenuData from './MenuData'
 import RestaurantData from './RestaurantData'
-import RestaurantForm from './RestaurantForm'
 import UserContext from './UserContext'
 
 function Dashboard() {
@@ -31,6 +31,7 @@ function Dashboard() {
 			</div>
 			<div className="p-3">
 				<RestaurantData />
+				<MenuData />
 			</div>
 		</div>
 	)
