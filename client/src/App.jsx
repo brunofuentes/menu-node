@@ -5,6 +5,7 @@ import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import Dashboard from './Dashboard'
 import RestaurantForm from './RestaurantForm'
+import MenuItemForm from './MenuItemForm'
 import { UserProvider } from './UserContext'
 import { RestaurantProvider } from './RestaurantContext'
 
@@ -12,8 +13,8 @@ function App() {
 	return (
 		<main>
 			<UserProvider>
-				<RestaurantProvider>
-					<Router>
+				<Router>
+					<RestaurantProvider>
 						<div className="relative">
 							<Navbar />
 						</div>
@@ -23,9 +24,11 @@ function App() {
 							<Route path="/register" element={<RegisterForm />} />
 							<Route path="/dashboard" element={<Dashboard />} />
 							<Route path="/dashboard/edit-restaurant" element={<RestaurantForm />} />
+							<Route path="/dashboard/edit-item" element={<MenuItemForm />} />
+							<Route path="/dashboard/add-item" element={<MenuItemForm />} />
 						</Routes>
-					</Router>
-				</RestaurantProvider>
+					</RestaurantProvider>
+				</Router>
 			</UserProvider>
 		</main>
 	)
