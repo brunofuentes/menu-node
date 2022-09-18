@@ -53,7 +53,7 @@ function RestaurantForm() {
 							style={{ borderColor: errors.imageUrl ? 'red' : '' }}
 							// defaultValue={restaurant?.imageUrl}
 							type="file"
-							className=" w-full p-2mt-1"
+							className=" w-full p-2 mt-1"
 						></input>
 						{errors.imageUrl}
 					</div>
