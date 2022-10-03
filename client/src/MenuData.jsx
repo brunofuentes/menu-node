@@ -28,10 +28,6 @@ function MenuData() {
 		navigate('/dashboard/edit-item')
 	}
 
-	function handleCheckbox() {
-		console.log('active button pressed')
-	}
-
 	return (
 		<div className="my-3">
 			<div className="flex justify-end my-2">
