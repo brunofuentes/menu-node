@@ -13,6 +13,7 @@ function MenuItemForm() {
 
 	const onSubmit = (data) => {
 		if (item) {
+			console.log(data)
 			updateMenuItem(data, item.id)
 		}
 		if (!item) {
@@ -23,7 +24,7 @@ function MenuItemForm() {
 		<section className="text-sm w-1/2 mx-auto">
 			<p className="text-xl font-bold text-center p-2">Item Details</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
-				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
+				<form onSubmit={handleSubmit(onSubmit)} key={item?.id} className="space-y-6">
 					<div className="flex gap-2">
 						<div>
 							<p className="text-sm font-bold text-gray-600 block">Current Image:</p>
@@ -33,7 +34,13 @@ function MenuItemForm() {
 							<label htmlFor="" className="text-sm font-bold text-gray-600 block">
 								Change current image:
 							</label>
-							<input {...register('imageUrl')} className="w-full p-2 mt-1" type="text" />
+							<input
+								{...register('imageUrl')}
+								style={{ borderColor: errors.imageUrl ? 'red' : '' }}
+								defaultValue={item?.imageUrl}
+								className="border-gray-300 rounded w-full p-2 border mt-1"
+								type="url"
+							></input>
 							{errors.imageUrl}
 						</div>
 					</div>
@@ -104,7 +111,7 @@ function MenuItemForm() {
 						<input
 							{...register('categories')}
 							style={{ borderColor: errors.categories ? 'red' : '' }}
-							defaultValue={item?.categories}
+							defaultValue={item?.categories.join()}
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
