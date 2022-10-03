@@ -47,9 +47,7 @@ function RestaurantForm() {
 							Cover Photo
 						</label>
 						<input
-							{...register('imageUrl', {
-								maxLength: 140,
-							})}
+							{...register('imageUrl')}
 							style={{ borderColor: errors.imageUrl ? 'red' : '' }}
 							// defaultValue={restaurant?.imageUrl}
 							type="file"
