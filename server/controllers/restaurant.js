@@ -39,10 +39,25 @@ module.exports = {
 		}
 	},
 
-	getRestaurant: async (req, res) => {
+	getRestaurantById: async (req, res) => {
 		let id = req.params.id
 		try {
 			let restaurant = await Restaurant.findByPk(id)
+			if (restaurant) {
+				return res.status(200).json({ restaurant })
+			}
+		} catch (err) {
+			return res.status(400).json({ err })
+		}
+	},
+
+	getRestaurantbySlug: async (req, res) => {
+		let slug = req.params.slug
+		console.log(slug)
+		try {
+			let restaurant = await Restaurant.findOne({
+				where: { slug: slug },
+			})
 			if (restaurant) {
 				return res.status(200).json({ restaurant })
 			}
