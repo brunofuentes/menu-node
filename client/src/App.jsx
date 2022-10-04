@@ -9,6 +9,7 @@ import MenuItemForm from './MenuItemForm'
 import AdminPageLayout from './AdminPageLayout'
 import { UserProvider } from './UserContext'
 import { RestaurantProvider } from './RestaurantContext'
+import { MenuProvider } from './MenuContext'
 
 function App() {
 	return (
@@ -16,18 +17,20 @@ function App() {
 			<UserProvider>
 				<Router>
 					<RestaurantProvider>
-						<Routes>
-							<Route path="/menu" element={<Menu />} />
-							<Route element={<AdminPageLayout />}>
-								<Route path="/" element={<Home />} />
-								<Route path="/login" element={<LoginForm />} />
-								<Route path="/register" element={<RegisterForm />} />
-								<Route path="/dashboard" element={<Dashboard />} />
-								<Route path="/dashboard/edit-restaurant" element={<RestaurantForm />} />
-								<Route path="/dashboard/edit-item" element={<MenuItemForm />} />
-								<Route path="/dashboard/add-item" element={<MenuItemForm />} />
-							</Route>
-						</Routes>
+						<MenuProvider>
+							<Routes>
+								<Route path="/:slug/menu" element={<Menu />} />
+								<Route element={<AdminPageLayout />}>
+									<Route path="/" element={<Home />} />
+									<Route path="/login" element={<LoginForm />} />
+									<Route path="/register" element={<RegisterForm />} />
+									<Route path="/dashboard" element={<Dashboard />} />
+									<Route path="/dashboard/edit-restaurant" element={<RestaurantForm />} />
+									<Route path="/dashboard/edit-item" element={<MenuItemForm />} />
+									<Route path="/dashboard/add-item" element={<MenuItemForm />} />
+								</Route>
+							</Routes>
+						</MenuProvider>
 					</RestaurantProvider>
 				</Router>
 			</UserProvider>
