@@ -15,7 +15,7 @@ export function RestaurantProvider({ children }) {
 	const getRestaurantData = () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 		if (restaurant_id) {
-			fetch(`/api/restaurants/${restaurant_id}`, {
+			fetch(`/api/restaurants/ids/${restaurant_id}`, {
 				method: 'GET',
 			})
 				.then((res) => {
