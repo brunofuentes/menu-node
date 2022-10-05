@@ -27,7 +27,7 @@ function Dashboard() {
 	return (
 		<div>
 			<div className="flex-col flex items-center justify-center text-3xl py-5">
-				<h1>Dashboard Page! (Protected)</h1>
+				<h1>Dashboard</h1>
 			</div>
 			<div className="p-3">
 				<RestaurantData />
