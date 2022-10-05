@@ -10,7 +10,6 @@ function RestaurantData() {
 	}, [])
 
 	function handleClickEdit() {
-		console.log('got clicked')
 		navigate('/dashboard/edit-restaurant')
 	}
 
