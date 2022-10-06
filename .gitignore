@@ -1,5 +1,6 @@
 .env
 router.rest
 node_modules
-config
+# config
+passport.js
 constants.js
