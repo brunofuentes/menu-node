@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const user = require('./routes/user')
 const restaurant = require('./routes/restaurant')
 const item = require('./routes/item')
+const path = require('path')
 const cors = require('cors')
 const allowedOrigins = require('./config/allowedOrigins')
 const passport = require('passport')
@@ -21,6 +22,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/api', user)
 app.use('/api', restaurant)
 app.use('/api', item)
+
+if (process.env.NODE_ENV === 'production') {
+	//server static content
+	//npm run build
+	app.use(express.static(path.join(__dirname, 'client/build')))
+}
 
 app.get('/api', (req, res) => {
 	res.json({ message: 'Hello from server' })
@@ -42,6 +49,9 @@ app.get('/api/logout', (req, res) => {
 		message: 'User successfully logged out',
 	})
 	// res.redirect('/api')
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'client/build/index.html'))
 })
 
 const PORT = process.env.PORT || 3001
