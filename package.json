@@ -3,8 +3,8 @@
 		"start": "cd server && npm install && node app.js",
 		"heroku-postbuild": "cd client && npm install && npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"db-init": "npx sequelize-cli db:init",
-		"db-migrate": "npx sequelize-cli db:migrate"
+		"db-init": "cd server && npx sequelize-cli init",
+		"db-migrate": "cd server && npx sequelize-cli db:migrate"
 	},
 	"engines": {
 		"node": "14.19.0",
