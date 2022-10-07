@@ -1,4 +1,4 @@
-const { PRIVATE_KEY } = require('../utils/constants')
+// const { PRIVATE_KEY } = require('../utils/constants')
 const User = require('../models').User
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -62,7 +62,7 @@ module.exports = {
 					restaurant_id: user.restaurant_id,
 				}
 
-				const token = jwt.sign(payload, PRIVATE_KEY, { expiresIn: '1d' })
+				const token = jwt.sign(payload, process.env.PRIVATE_KEY, { expiresIn: '1d' })
 
 				return res.status(200).send({
 					success: true,
