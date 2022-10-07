@@ -14,7 +14,7 @@ function LoginForm() {
 
 	let navigate = useNavigate()
 
-	useEffect(() => {
+	const authenticateUser = () => {
 		const token = sessionStorage.getItem('token')
 		fetch('/api/protected', {
 			method: 'GET',
@@ -27,7 +27,7 @@ function LoginForm() {
 			.catch((err) => {
 				navigate('/login')
 			})
-	}, [navigate])
+	}
 
 	function onSubmit(data) {
 		fetch('/api/sign-in', {
@@ -44,7 +44,7 @@ function LoginForm() {
 			.then((user) => {
 				if (user.success) {
 					saveUserInfo(user)
-					navigate('/dashboard')
+					authenticateUser()
 				}
 				return { message: user.message }
 			})
