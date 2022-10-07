@@ -2,5 +2,5 @@
 router.rest
 node_modules
 # config
-passport.js
+# passport.js
 constants.js
