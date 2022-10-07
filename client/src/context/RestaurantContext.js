@@ -10,8 +10,6 @@ export function RestaurantProvider({ children }) {
 	const [items, setItems] = useState([])
 	const [item, setItem] = useState(null)
 
-	const { user } = useContext(UserContext)
-
 	const getRestaurantData = () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 		if (restaurant_id) {
