@@ -2,7 +2,8 @@
 	"scripts": {
 		"start": "cd server && npm install && node app.js",
 		"heroku-postbuild": "cd client && npm install && npm run build",
-		"db-init": "cd server && npx sequelize-cli db:init"
+		"db-init": "cd server && npx sequelize db:init",
+		"db-migrate": "cd server && npx sequelize db:migrate"
 	},
 	"engines": {
 		"node": "14.19.0",
