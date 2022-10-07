@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import RestaurantContext from './RestaurantContext'
+import RestaurantContext from '../../context/RestaurantContext'
 
 function RestaurantForm() {
 	let navigate = useNavigate()

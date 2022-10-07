@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import UserContext from './UserContext'
+import UserContext from '../../context/UserContext'
 
 function LoginForm() {
 	const { saveUserInfo } = useContext(UserContext)

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import RestaurantContext from './RestaurantContext'
+import RestaurantContext from '../../context/RestaurantContext'
 
 function MenuItemForm() {
 	const { item, createMenuItem, updateMenuItem } = useContext(RestaurantContext)

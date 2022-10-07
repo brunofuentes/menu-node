@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
-import UserContext from './UserContext'
+import UserContext from './../context/UserContext'
 import { useContext } from 'react'
 
 function Navbar() {

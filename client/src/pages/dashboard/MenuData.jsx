@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import RestaurantContext from './RestaurantContext'
-import './styles.css'
+import RestaurantContext from '../../context/RestaurantContext'
+import '../../styles.css'
 
 function MenuData() {
 	let navigate = useNavigate()

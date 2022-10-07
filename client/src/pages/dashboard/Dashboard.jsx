@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import MenuData from './MenuData'
 import RestaurantData from './RestaurantData'
-import UserContext from './UserContext'
+import UserContext from '../../context/UserContext'
 
 function Dashboard() {
 	const { user } = useContext(UserContext)

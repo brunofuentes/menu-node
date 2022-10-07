@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import MenuContext from './MenuContext'
+import MenuContext from '../../context/MenuContext'
 
 function Menu() {
 	const { slug } = useParams()
@@ -17,7 +17,7 @@ function Menu() {
 	return (
 		<main>
 			<section id="restaurant-header" className="w-full mx-auto">
-				<img src={restaurant?.imageUrl} className="max-h-[450px] object-cover w-full" alt="Restaurant Cover" />
+				<img src={restaurant?.imageUrl} className="max-h-[450px] object-cover w-full sm:w-1/2 mx-auto" alt="Restaurant Cover" />
 				<div className="mx-auto max-w-2xl px-4 py-8">
 					<h1 className="font-bold text-4xl">{restaurant?.name}</h1>
 					<p>{restaurant?.description}</p>
