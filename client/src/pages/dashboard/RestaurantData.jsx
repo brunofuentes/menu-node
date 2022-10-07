@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
-import RestaurantContext from './RestaurantContext'
+import RestaurantContext from '../../context/RestaurantContext'
 
 function RestaurantData() {
 	const navigate = useNavigate()

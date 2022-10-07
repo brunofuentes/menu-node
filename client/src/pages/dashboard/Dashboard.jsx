@@ -2,7 +2,8 @@ import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import MenuData from './MenuData'
 import RestaurantData from './RestaurantData'
-import UserContext from './UserContext'
+import UserContext from '../../context/UserContext'
+import QRCodeData from './QRCodeData'
 
 function Dashboard() {
 	const { user } = useContext(UserContext)
@@ -29,10 +30,11 @@ function Dashboard() {
 			<div className="flex-col flex items-center justify-center text-3xl py-5">
 				<h1>Dashboard</h1>
 			</div>
-			<div className="p-3">
+			<div className="p-3 flex">
 				<RestaurantData />
-				<MenuData />
+				<QRCodeData />
 			</div>
+			<MenuData />
 		</div>
 	)
 }
