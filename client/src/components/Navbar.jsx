@@ -10,7 +10,7 @@ function Navbar() {
 	let navigate = useNavigate()
 
 	return (
-		<nav className="relative text-white text-xl bg-gray-600 flex items-center justify-between py-5">
+		<nav className="sticky text-white text-xl bg-gray-600 flex items-center justify-between py-5">
 			<div className="mx-2 sm:mx-5">
 				<a href="/">Menu App</a>
 			</div>

@@ -55,12 +55,12 @@ function LoginForm() {
 	}
 
 	return (
-		<div className="flex flex-col min-h-screen bg-gray-50 justify-center">
-			<div className="max-w-md w-full mx-auto">
+		<div className="flex flex-col py-auto justify-center">
+			<div className="max-w-md w-full mx-auto my-10">
 				<div className="text-xl font-medium text-center">Hi there,</div>
 				<div className="text-3xl font-bold text-gray-900 mt-2 text-center">Welcome back!</div>
 			</div>
-			<div className="max-w-md w-full mx-auto mt-4 bg-white p-8 rounded border border-gray-300">
+			<div className="sm:w-1/2 w-2/3 mx-auto mt-4 bg-white p-8 rounded border border-gray-300">
 				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">

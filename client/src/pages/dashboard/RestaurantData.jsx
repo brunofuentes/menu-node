@@ -5,6 +5,7 @@ import RestaurantContext from '../../context/RestaurantContext'
 function RestaurantData() {
 	const navigate = useNavigate()
 	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
+
 	useEffect(() => {
 		getRestaurantData()
 	}, [])
@@ -69,7 +70,7 @@ function RestaurantData() {
 					</div>
 				</div>
 			) : (
-				<div>Hellow</div>
+				<div>Restaurant not found</div>
 			)}
 		</div>
 	)
