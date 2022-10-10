@@ -1,5 +1,4 @@
-import { createContext, useContext, useState } from 'react'
-import UserContext from './UserContext'
+import { createContext, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 const RestaurantContext = createContext()
