@@ -15,14 +15,11 @@ export function RestaurantProvider({ children }) {
 			fetch(`/api/restaurants/ids/${restaurant_id}`, {
 				method: 'GET',
 			})
-				.then((res) => {
-					if (res.ok) {
-						return res.json()
-					}
-					throw res
-				})
+				.then((res) => res.json())
 				.then((data) => {
-					setRestaurant(data.restaurant)
+					if (data) {
+						setRestaurant(data.restaurant)
+					}
 				})
 				.catch((err) => {
 					console.error('Error fetching data ', err)
@@ -36,14 +33,11 @@ export function RestaurantProvider({ children }) {
 			fetch(`/api/${restaurant_id}/items`, {
 				method: 'GET',
 			})
-				.then((res) => {
-					if (res.ok) {
-						return res.json()
-					}
-					throw res
-				})
+				.then((res) => res.json())
 				.then((data) => {
-					setItems(data.items)
+					if (data) {
+						setItems(data.items)
+					}
 				})
 				.catch((err) => {
 					console.error('Error fetching data ', err)
@@ -56,12 +50,7 @@ export function RestaurantProvider({ children }) {
 			fetch(`/api/items/${id}`, {
 				method: 'GET',
 			})
-				.then((res) => {
-					if (res.ok) {
-						return res.json()
-					}
-					throw res
-				})
+				.then((res) => res.json())
 				.then((data) => {
 					setItem(data.item)
 				})
