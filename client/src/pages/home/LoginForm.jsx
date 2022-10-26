@@ -16,7 +16,7 @@ function LoginForm() {
 
 	const authenticateUser = () => {
 		const token = sessionStorage.getItem('token')
-		fetch(`${process.env.NEXT_PUBLIC_API_BASE_ENDPOINT}/api/protected`, {
+		fetch(`/protected`, {
 			method: 'GET',
 			headers: {
 				Authorization: token,
@@ -30,7 +30,7 @@ function LoginForm() {
 	}
 
 	function onSubmit(data) {
-		fetch(`${process.env.NEXT_PUBLIC_API_BASE_ENDPOINT}/api/sign-in`, {
+		fetch(`/sign-in`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
