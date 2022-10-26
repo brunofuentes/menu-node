@@ -16,7 +16,7 @@ function LoginForm() {
 
 	const authenticateUser = () => {
 		const token = sessionStorage.getItem('token')
-		fetch(`/protected`, {
+		fetch(`/api/protected`, {
 			method: 'GET',
 			headers: {
 				Authorization: token,
@@ -30,7 +30,7 @@ function LoginForm() {
 	}
 
 	function onSubmit(data) {
-		fetch(`/sign-in`, {
+		fetch(`/api/sign-in`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
