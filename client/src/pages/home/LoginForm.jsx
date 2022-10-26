@@ -16,7 +16,7 @@ function LoginForm() {
 
 	const authenticateUser = () => {
 		const token = sessionStorage.getItem('token')
-		fetch('/api/protected', {
+		fetch(`${process.env.API_ENDPOINT}/api/protected`, {
 			method: 'GET',
 			headers: {
 				Authorization: token,
@@ -30,7 +30,7 @@ function LoginForm() {
 	}
 
 	function onSubmit(data) {
-		fetch('/api/sign-in', {
+		fetch(`${process.env.API_ENDPOINT}/api/sign-in`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -106,7 +106,10 @@ function LoginForm() {
 						</div>
 					</div>
 					<div>
-						<button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white">
+						<button
+							type="submit"
+							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
+						>
 							Submit
 						</button>
 					</div>
