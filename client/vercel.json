@@ -1,0 +1,8 @@
+{
+	"rewrites": [
+		{
+			"source": "/api/:path",
+			"destination": "https://menu-online-node.herokuapp.com/api/:path"
+		}
+	]
+}
