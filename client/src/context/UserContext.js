@@ -7,11 +7,11 @@ export function UserProvider({ children }) {
 	const [isLogged, setIsLogged] = useState(false)
 
 	const saveUserInfo = (user_data) => {
-		setUser(() => user_data)
-		sessionStorage.setItem('token', user.token)
-		sessionStorage.setItem('id', user.id)
-		sessionStorage.setItem('username', user.username)
-		sessionStorage.setItem('restaurant_id', user.restaurant_id)
+		sessionStorage.setItem('token', user_data.token)
+		sessionStorage.setItem('id', user_data.id)
+		sessionStorage.setItem('username', user_data.username)
+		sessionStorage.setItem('restaurant_id', user_data.restaurant_id)
+		setUser(user_data)
 	}
 
 	const GetUserStatus = () => {
@@ -22,7 +22,7 @@ export function UserProvider({ children }) {
 			} else {
 				setIsLogged(false)
 			}
-		})
+		}, [token])
 	}
 
 	const logoutUser = () => {
@@ -30,7 +30,11 @@ export function UserProvider({ children }) {
 		setIsLogged(() => false)
 	}
 
-	return <UserContext.Provider value={{ isLogged, user, saveUserInfo, GetUserStatus, logoutUser }}>{children}</UserContext.Provider>
+	return (
+		<UserContext.Provider value={{ isLogged, user, saveUserInfo, GetUserStatus, logoutUser }}>
+			{children}
+		</UserContext.Provider>
+	)
 }
 
 export default UserContext
