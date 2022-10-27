@@ -8,7 +8,7 @@ function RestaurantData() {
 
 	useEffect(() => {
 		getRestaurantData()
-	}, [])
+	}, [getRestaurantData])
 
 	function handleClickEdit() {
 		navigate('/dashboard/edit-restaurant')
@@ -31,7 +31,13 @@ function RestaurantData() {
 							<li>
 								<span className="font-semibold">Cover Photo:</span>
 								<div>
-									<img className="rounded" height="250px" width="250px" src={restaurant?.imageUrl} alt="Restaurant Cover"></img>
+									<img
+										className="rounded"
+										height="250px"
+										width="250px"
+										src={restaurant?.imageUrl}
+										alt="Restaurant Cover"
+									></img>
 								</div>
 							</li>
 							<li>

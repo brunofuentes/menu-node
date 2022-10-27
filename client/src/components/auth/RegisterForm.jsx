@@ -54,7 +54,7 @@ function RegisterForm() {
 							type="text"
 							className="w-full p-2 border border-gray-300 rounded mt-1"
 						></input>
-						{errors.email && <span>Username is required!</span>}
+						{errors.username && <span>Username is required!</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
@@ -109,7 +109,10 @@ function RegisterForm() {
 						</div>
 					</div>
 					<div>
-						<button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white">
+						<button
+							type="submit"
+							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
+						>
 							Register
 						</button>
 					</div>

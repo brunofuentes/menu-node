@@ -20,6 +20,7 @@ function MenuItemForm() {
 			createMenuItem(data)
 		}
 	}
+
 	return (
 		<section className="text-sm w-1/2 mx-auto">
 			<p className="text-xl font-bold text-center p-2">Item Details</p>
@@ -118,7 +119,10 @@ function MenuItemForm() {
 						{errors.categories && <span className="text-sm">Item categories is Required</span>}
 					</div>
 					<div>
-						<button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white">
+						<button
+							type="submit"
+							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
+						>
 							Save
 						</button>
 					</div>

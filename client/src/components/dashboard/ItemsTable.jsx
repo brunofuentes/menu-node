@@ -6,10 +6,11 @@ import '../../styles.css'
 
 function MenuData() {
 	let navigate = useNavigate()
-	const { items, setItem, getMenuData, getMenuItemData, deleteMenuItem } = useContext(RestaurantContext)
+	const { items, setItem, getMenuData, deleteMenuItem } = useContext(RestaurantContext)
+
 	useEffect(() => {
 		getMenuData()
-	}, [])
+	}, [getMenuData])
 
 	function handleAddNewItem() {
 		setItem(null)
@@ -19,13 +20,13 @@ function MenuData() {
 	function handleDelete(id) {
 		alert('Are you sure you want to delete this item from your menu?')
 		deleteMenuItem(id)
-		getMenuData()
 	}
 
 	function handleEdit(id) {
-		// alert('Edit button pressed. Redirect to edit-page')
-		getMenuItemData(id)
-		navigate('/dashboard/edit-item')
+		if (items) {
+			setItem(items.find((item) => item.id === id))
+		}
+		navigate(`/dashboard/edit-item/${id}`)
 	}
 
 	return (

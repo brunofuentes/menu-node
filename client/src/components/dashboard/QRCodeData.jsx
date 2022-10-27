@@ -5,9 +5,10 @@ import { useEffect } from 'react'
 
 function QRCodeData() {
 	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
-	useEffect(() => {
-		getRestaurantData()
-	}, [])
+
+	// useEffect(() => {
+	// 	getRestaurantData()
+	// }, [])
 
 	const url = `https://menu-online-node.herokuapp.com/${restaurant?.slug}/menu`
 	const [qrcode, setQrcode] = useState('')
@@ -48,13 +49,29 @@ function QRCodeData() {
 							download="qrcode.png"
 						>
 							<div className="flex">
-								<img className="invert" height="18px" width="18px" src="images/icons/download_icon.svg" alt="" />
+								<img
+									className="invert"
+									height="18px"
+									width="18px"
+									src="images/icons/download_icon.svg"
+									alt=""
+								/>
 								<span className="px-1 text-white">Generate</span>
 							</div>
 						</button>
-						<a className="mx-1 inline-block bg-gray-800 rounded-lg p-2 hover:bg-gray-500" href={qrcode} download="qrcode.png">
+						<a
+							className="mx-1 inline-block bg-gray-800 rounded-lg p-2 hover:bg-gray-500"
+							href={qrcode}
+							download="qrcode.png"
+						>
 							<div className="flex">
-								<img className="invert" height="18px" width="18px" src="images/icons/download_icon.svg" alt="" />
+								<img
+									className="invert"
+									height="18px"
+									width="18px"
+									src="images/icons/download_icon.svg"
+									alt=""
+								/>
 								<span className="px-1 text-white">Download</span>
 							</div>
 						</a>
