@@ -9,10 +9,10 @@ export function RestaurantProvider({ children }) {
 	const [items, setItems] = useState([])
 	const [item, setItem] = useState(null)
 
-	const getRestaurantData = () => {
+	const getRestaurantData = async () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 		if (restaurant_id) {
-			fetch(`/api/restaurants/ids/${restaurant_id}`, {
+			await fetch(`/api/restaurants/ids/${restaurant_id}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
