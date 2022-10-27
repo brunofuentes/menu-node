@@ -49,7 +49,7 @@ export function RestaurantProvider({ children }) {
 					setItems(data.items)
 				})
 				.catch((err) => {
-					console.error('Error fetching data ', err)
+					console.log('Error fetching data ', err)
 				})
 		}
 	}
@@ -69,7 +69,7 @@ export function RestaurantProvider({ children }) {
 					setItem(data.item)
 				})
 				.catch((err) => {
-					console.error('Error fetching data ', err)
+					console.log('Error fetching data ', err)
 				})
 		}
 	}
@@ -96,7 +96,7 @@ export function RestaurantProvider({ children }) {
 				navigate('/dashboard')
 			})
 			.catch((err) => {
-				console.error('Error:', err)
+				console.log('Error:', err)
 			})
 	}
 
@@ -122,7 +122,7 @@ export function RestaurantProvider({ children }) {
 				navigate('/dashboard')
 			})
 			.catch((err) => {
-				console.error('Error:', err)
+				console.log('Error:', err)
 			})
 	}
 
@@ -136,7 +136,7 @@ export function RestaurantProvider({ children }) {
 				navigate('/dashboard')
 			})
 			.catch((err) => {
-				console.error('Error:', err)
+				console.log('Error:', err)
 			})
 	}
 
