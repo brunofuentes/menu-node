@@ -19,7 +19,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"proxy": "https://menu-online-node.herokuapp.com/api",
+	"proxy": "https://menu-online-node.herokuapp.com",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
