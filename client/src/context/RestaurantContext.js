@@ -46,31 +46,19 @@ export function RestaurantProvider({ children }) {
 					throw res
 				})
 				.then((data) => {
-					setItems(data.items)
+					setItems(() => {
+						return data.items
+					})
 				})
 				.catch((err) => {
-					console.log('Error fetching data ', err)
+					console.error('Error fetching data ', err)
 				})
 		}
 	}
 
 	const getMenuItemData = (id) => {
-		if (id) {
-			fetch(`/api/items/${id}`, {
-				method: 'GET',
-			})
-				.then((res) => {
-					if (res.ok) {
-						return res.json()
-					}
-					throw res
-				})
-				.then((data) => {
-					setItem(data.item)
-				})
-				.catch((err) => {
-					console.log('Error fetching data ', err)
-				})
+		if (items) {
+			setItem(items.find((item) => item.id === id))
 		}
 	}
 
@@ -96,7 +84,7 @@ export function RestaurantProvider({ children }) {
 				navigate('/dashboard')
 			})
 			.catch((err) => {
-				console.log('Error:', err)
+				console.error('Error:', err)
 			})
 	}
 
@@ -122,7 +110,7 @@ export function RestaurantProvider({ children }) {
 				navigate('/dashboard')
 			})
 			.catch((err) => {
-				console.log('Error:', err)
+				console.error('Error:', err)
 			})
 	}
 
@@ -136,7 +124,7 @@ export function RestaurantProvider({ children }) {
 				navigate('/dashboard')
 			})
 			.catch((err) => {
-				console.log('Error:', err)
+				console.error('Error:', err)
 			})
 	}
 
