@@ -14,6 +14,9 @@ export function RestaurantProvider({ children }) {
 		if (restaurant_id) {
 			fetch(`/api/restaurants/ids/${restaurant_id}`, {
 				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
 			})
 				.then((res) => {
 					if (res.ok) {
