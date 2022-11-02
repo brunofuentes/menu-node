@@ -8,7 +8,7 @@ function RestaurantData() {
 
 	useEffect(() => {
 		getRestaurantData()
-	}, [getRestaurantData])
+	}, [])
 
 	function handleClickEdit() {
 		navigate('/dashboard/edit-restaurant')
