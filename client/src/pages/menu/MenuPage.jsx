@@ -19,10 +19,14 @@ function Menu() {
 		return <LoadingSpinner />
 	} else {
 		return (
-			<main className="sm:w-1/2 mx-auto px-3">
+			<main className="sm:w-1/2 mx-auto">
 				<section id="restaurant-header" className="w-full mx-auto">
-					<img src={restaurant?.imageUrl} className="object-cover w-full mx-auto" alt="Restaurant Cover" />
-					<div className="mx-auto max-w-2xl px-4 py-8">
+					<img
+						src={restaurant?.imageUrl}
+						className="object-fill w-full max-h-80 mx-auto"
+						alt="Restaurant Cover"
+					/>
+					<div className="mx-auto max-w-2xl px-3 py-8">
 						<h1 className="font-bold text-4xl">{restaurant?.name}</h1>
 						<p>{restaurant?.description}</p>
 					</div>
@@ -30,7 +34,7 @@ function Menu() {
 				<DynamicNavbar />
 				{sections.map((section, section_index) => {
 					return (
-						<section key={section_index}>
+						<section className="px-3" key={section_index}>
 							<h2 id={section.replace(' ', '-').toLowerCase()} className="font-bold text-2xl mt-4 pt-4">
 								{section}
 							</h2>
