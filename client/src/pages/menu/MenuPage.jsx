@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import MenuContext from '../../context/MenuContext'
 import DynamicNavbar from '../../components/menu/DynamicNavbar'
+import LoadingSpinner from '../../components/LoadingSpinner'
 
 function Menu() {
 	const { slug } = useParams()
@@ -15,11 +16,7 @@ function Menu() {
 	menuItems.map((item) => (sections.includes(item.section) ? null : sections.push(item.section)))
 
 	if (sections.length < 1) {
-		return (
-			<div className="sm:w-1/2 mx-auto px-3 flex flex-col justify-center items-center min-h-screen">
-				<span className="">Loading...</span>
-			</div>
-		)
+		return <LoadingSpinner />
 	} else {
 		return (
 			<main className="sm:w-1/2 mx-auto px-3">
