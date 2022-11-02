@@ -157,7 +157,10 @@ function RestaurantForm() {
 						{errors.facebookUrl}
 					</div>
 					<div>
-						<button type="submit" className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white">
+						<button
+							type="submit"
+							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
+						>
 							Save
 						</button>
 					</div>
