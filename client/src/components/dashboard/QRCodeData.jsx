@@ -10,7 +10,7 @@ function QRCodeData() {
 	// 	getRestaurantData()
 	// }, [])
 
-	const url = `https://menu-online-node.herokuapp.com/${restaurant?.slug}/menu`
+	const url = `https://menu-node-brunofuentes.vercel.app/${restaurant?.slug}/menu`
 	const [qrcode, setQrcode] = useState('')
 
 	const GenerateQRCode = () => {
