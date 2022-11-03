@@ -4,7 +4,16 @@ import { useNavigate } from 'react-router-dom'
 const UserContext = createContext()
 
 export function UserProvider({ children }) {
-	const [user, setUser] = useState(null)
+	let userLS = {
+		token: sessionStorage.getItem('token'),
+		id: sessionStorage.getItem('id'),
+		username: sessionStorage.getItem('username'),
+		firstName: sessionStorage.getItem('firstName'),
+		lastName: sessionStorage.getItem('lastName'),
+		restaurant_id: sessionStorage.getItem('restaurant_id'),
+	}
+
+	const [user, setUser] = useState(userLS || null)
 	const [isLogged, setIsLogged] = useState(false)
 	const [showSidebar, setShowSidebar] = useState(true)
 
@@ -14,19 +23,10 @@ export function UserProvider({ children }) {
 		sessionStorage.setItem('token', user_data.token)
 		sessionStorage.setItem('id', user_data.id)
 		sessionStorage.setItem('username', user_data.username)
+		sessionStorage.setItem('firstName', user_data.firstName)
+		sessionStorage.setItem('lastName', user_data.lastName)
 		sessionStorage.setItem('restaurant_id', user_data.restaurant_id)
 		setUser(user_data)
-	}
-
-	const GetUserStatus = () => {
-		const token = sessionStorage.getItem('token')
-		useEffect(() => {
-			if (token) {
-				setIsLogged(true)
-			} else {
-				setIsLogged(false)
-			}
-		}, [token])
 	}
 
 	const logoutUser = () => {
@@ -35,19 +35,27 @@ export function UserProvider({ children }) {
 	}
 
 	const AuthenticateUser = () => {
-		const token = sessionStorage.getItem('token')
-		fetch(`/api/protected`, {
-			method: 'GET',
-			headers: {
-				Authorization: token,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => navigate('/dashboard'))
-			.catch((err) => {
-				navigate('/login')
-				console.error('Error: ' + err)
+		const token = user?.token
+
+		useEffect(() => {
+			fetch(`/api/protected`, {
+				method: 'GET',
+				headers: {
+					Authorization: token,
+				},
 			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.success) {
+						setIsLogged(true)
+					}
+				})
+				.catch((err) => {
+					setIsLogged(false)
+					navigate('/login')
+					console.error('Error: ' + err)
+				})
+		}, [token])
 	}
 
 	const LoginUser = (data) => {
@@ -65,7 +73,6 @@ export function UserProvider({ children }) {
 			.then((user) => {
 				if (user.success) {
 					SaveUserInfo(user)
-					// AuthenticateUser()
 					navigate('/dashboard')
 				}
 				return { message: user.message }
@@ -82,7 +89,6 @@ export function UserProvider({ children }) {
 				isLogged,
 				user,
 				SaveUserInfo,
-				GetUserStatus,
 				logoutUser,
 				showSidebar,
 				setShowSidebar,

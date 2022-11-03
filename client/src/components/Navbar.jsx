@@ -5,11 +5,11 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 function Navbar() {
-	const { isLogged, GetUserStatus, logoutUser, setShowSidebar, showSidebar } = useContext(UserContext)
+	const { isLogged, AuthenticateUser, logoutUser, setShowSidebar, showSidebar } = useContext(UserContext)
 
 	let navigate = useNavigate()
 
-	GetUserStatus()
+	AuthenticateUser()
 
 	return (
 		<nav className="sticky text-white text-xl bg-slate-500 flex items-center justify-between h-[8vh] shadow-md">
