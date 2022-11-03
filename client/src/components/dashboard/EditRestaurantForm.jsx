@@ -45,16 +45,6 @@ function RestaurantForm() {
 
 	return (
 		<section className="text-sm w-9/12 mx-auto">
-			<Link className="inline-block font-medium" to="/dashboard/restaurant">
-				<div className="flex items-center">
-					<img
-						height="16px"
-						width="16px"
-						src="/images/icons/chevron_left.svg"
-						alt="voltar para página do Restaurante"
-					/>
-				</div>
-			</Link>
 			<p className="text-xl font-bold text-center p-2">Restaurant Details</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
 				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
