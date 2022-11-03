@@ -1,24 +1,38 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import UserContext from './../context/UserContext'
+import UserContext from '../context/UserContext'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 function Navbar() {
-	const { isLogged, GetUserStatus, logoutUser } = useContext(UserContext)
-	GetUserStatus()
+	const { isLogged, GetUserStatus, logoutUser, setShowSidebar, showSidebar } = useContext(UserContext)
 
 	let navigate = useNavigate()
 
+	GetUserStatus()
+
 	return (
-		<nav className="sticky text-white text-xl bg-gray-600 flex items-center justify-between py-5">
+		<nav className="sticky text-white text-xl bg-slate-500 flex items-center justify-between h-[8vh] shadow-md">
+			{isLogged && (
+				<div className="mx-2 sm:mx-5">
+					<button onClick={() => setShowSidebar(!showSidebar)}>
+						<img
+							height="25px"
+							width="25px"
+							className="invert"
+							src="/images/icons/hamburger_menu.svg"
+							alt=""
+						/>
+					</button>
+				</div>
+			)}
 			<div className="mx-2 sm:mx-5">
 				<Link to="/">Menu App</Link>
 			</div>
 			<div className="flex mx-2 sm:mx-5">
 				{isLogged ? (
 					<div>
-						<Link to="/dashboard">Dashboard</Link>
+						<Link to="/dashboard/restaurant">Dashboard</Link>
 						<button
 							onClick={() => {
 								logoutUser()
