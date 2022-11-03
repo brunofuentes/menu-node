@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import UserContext from '../../context/UserContext'
 
 function LoginForm() {
-	const { saveUserInfo } = useContext(UserContext)
+	const { LoginUser } = useContext(UserContext)
 
 	const {
 		register,
@@ -12,46 +12,8 @@ function LoginForm() {
 		formState: { errors },
 	} = useForm()
 
-	let navigate = useNavigate()
-
-	const authenticateUser = () => {
-		const token = sessionStorage.getItem('token')
-		fetch(`/api/protected`, {
-			method: 'GET',
-			headers: {
-				Authorization: token,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => navigate('/dashboard/menu'))
-			.catch((err) => {
-				navigate('/login')
-			})
-	}
-
 	function onSubmit(data) {
-		fetch(`/api/sign-in`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				email: data.email,
-				password: data.password,
-			}),
-		})
-			.then((res) => res.json())
-			.then((user) => {
-				if (user.success) {
-					saveUserInfo(user)
-					authenticateUser()
-				}
-				return { message: user.message }
-			})
-			.catch((err) => {
-				console.log(err)
-				navigate('/login')
-			})
+		LoginUser(data)
 	}
 
 	return (
