@@ -2,8 +2,14 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
 import Sidebar from './dashboard/Sidebar'
+import { useContext } from 'react'
+import UserContext from '../context/UserContext'
 
 function AdminPageLayout() {
+	const { AuthenticateUser } = useContext(UserContext)
+
+	AuthenticateUser()
+
 	return (
 		<>
 			<Navbar />
