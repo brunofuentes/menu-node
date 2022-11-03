@@ -52,7 +52,6 @@ export function UserProvider({ children }) {
 				})
 				.catch((err) => {
 					setIsLogged(false)
-					navigate('/login')
 					console.error('Error: ' + err)
 				})
 		}, [token])
