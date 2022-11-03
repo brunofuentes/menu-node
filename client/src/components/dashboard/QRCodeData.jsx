@@ -7,15 +7,14 @@ import LoadingSpinner from '../LoadingSpinner'
 function QRCodeData() {
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
-	const url = `https://menu-node-brunofuentes.vercel.app/${restaurant?.slug}/menu`
-	const [qrcode, setQrcode] = useState('')
+	const url = `https://menu-node.vercel.app/${restaurant?.slug}/menu`
+	const [qrcode, setQrcode] = useState(null)
 
 	useEffect(() => {
-		GenerateQRCode()
-	}, [])
+		GetRestaurantData()
+	}, [qrcode])
 
 	const GenerateQRCode = () => {
-		GetRestaurantData()
 		QRCode.toDataURL(
 			url,
 			{
@@ -41,6 +40,7 @@ function QRCodeData() {
 				<div className="flex flex-col">
 					{qrcode && (
 						<>
+							<p>QR-Code URL: </p>
 							<a className="" href={url}>
 								<small>{url}</small>
 							</a>
@@ -52,7 +52,7 @@ function QRCodeData() {
 					<div>
 						<button
 							onClick={() => GenerateQRCode()}
-							className="hidden mx-1 bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
+							className="mx-1 bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
 							href={qrcode}
 							download="qrcode.png"
 						>
@@ -68,7 +68,9 @@ function QRCodeData() {
 							</div>
 						</button>
 						<a
-							className="mx-1 inline-block bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
+							className={`${
+								qrcode ? 'bg-gray-800' : 'pointer-events-none bg-gray-400'
+							} mx-1 inline-block  rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300`}
 							href={qrcode}
 							download="qrcode.png"
 						>
