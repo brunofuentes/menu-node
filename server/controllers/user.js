@@ -70,6 +70,8 @@ module.exports = {
 					id: user.id,
 					username: user.username,
 					email: user.email,
+					firstName: user.firstName,
+					lastName: user.lastName,
 					restaurant_id: user.restaurant_id,
 					token: 'Bearer ' + token,
 				})
