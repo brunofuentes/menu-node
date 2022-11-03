@@ -34,15 +34,15 @@ function RegisterForm() {
 	}
 
 	return (
-		<div className="flex flex-col min-h-screen bg-gray-50 justify-center">
+		<div className="flex flex-col min-h-screen bg-gray-50 justify-center p-3">
 			<div className="max-w-md w-full mx-auto">
-				<div className="text-3xl font-bold text-gray-900 mt-2 text-center">Create Account</div>
+				<div className="text-3xl font-bold text-gray-900 mt-2 text-center">Crie uma conta</div>
 			</div>
 			<div className="max-w-md w-full mx-auto mt-4 bg-white p-8 rounded border border-gray-300">
 				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Username
+							Usuário
 						</label>
 						<input
 							{...register('username', {
@@ -54,7 +54,7 @@ function RegisterForm() {
 							type="text"
 							className="w-full p-2 border border-gray-300 rounded mt-1"
 						></input>
-						{errors.username && <span>Username is required!</span>}
+						{errors.username && <span>Usuário é obrigatório!</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
@@ -70,11 +70,11 @@ function RegisterForm() {
 							type="text"
 							className="w-full p-2 border border-gray-300 rounded mt-1"
 						></input>
-						{errors.email && <span>Email invalid</span>}
+						{errors.email && <span>Email inválido</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Password
+							Senha
 						</label>
 						<input
 							{...register('password', { required: true })}
@@ -84,11 +84,11 @@ function RegisterForm() {
 							type="password"
 							className="w-full p-2 border border-gray-300 rounded mt-1"
 						></input>
-						{errors.password && <span>Invalid Password</span>}
+						{errors.password && <span>Senha Inválida</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Cofirm Password
+							Confirmar senha
 						</label>
 						<input
 							{...register('confirm_password', { required: true })}
@@ -98,13 +98,13 @@ function RegisterForm() {
 							type="password"
 							className="w-full p-2 border border-gray-300 rounded mt-1"
 						></input>
-						{errors.password && <span>Invalid Password</span>}
+						{errors.password && <span>Senha Inválida</span>}
 					</div>
 					<div className="flex items-center justify-between">
 						<div className="flex items-center">
 							<input type="checkbox" className="h-4 w-4 text-blue-300 rounded"></input>
 							<label htmlFor="" className="ml-2 text-sm text-gray-600">
-								Accept our terms and conditions
+								Aceitar termos e condições
 							</label>
 						</div>
 					</div>
@@ -113,7 +113,7 @@ function RegisterForm() {
 							type="submit"
 							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
 						>
-							Register
+							Registrar
 						</button>
 					</div>
 				</form>
