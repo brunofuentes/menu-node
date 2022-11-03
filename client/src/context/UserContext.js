@@ -35,7 +35,7 @@ export function UserProvider({ children }) {
 	}
 
 	const AuthenticateUser = () => {
-		const token = user?.token
+		const token = sessionStorage.getItem('token')
 
 		useEffect(() => {
 			fetch(`/api/protected`, {
@@ -52,6 +52,8 @@ export function UserProvider({ children }) {
 				})
 				.catch((err) => {
 					setIsLogged(false)
+					sessionStorage.clear()
+					navigate('/login')
 					console.error('Error: ' + err)
 				})
 		}, [token])
