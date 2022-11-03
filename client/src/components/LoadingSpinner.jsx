@@ -1,9 +1,9 @@
 import React from 'react'
 
 const spinnerBorder = {
-	'vertical-align': '-0.125em',
+	verticalAlign: '-0.125em',
 	border: '0.25em solid',
-	'border-right-color': 'transparent',
+	borderRightColor: 'transparent',
 }
 
 function LoadingSpinner() {
