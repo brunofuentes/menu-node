@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import LoadingSpinner from '../LoadingSpinner'
 
 function QRCodeData() {
-	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
+	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
 	const url = `https://menu-node-brunofuentes.vercel.app/${restaurant?.slug}/menu`
 	const [qrcode, setQrcode] = useState('')
@@ -15,7 +15,7 @@ function QRCodeData() {
 	}, [])
 
 	const GenerateQRCode = () => {
-		getRestaurantData()
+		GetRestaurantData()
 		QRCode.toDataURL(
 			url,
 			{

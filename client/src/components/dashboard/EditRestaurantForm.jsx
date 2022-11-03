@@ -8,9 +8,9 @@ import LoadingSpinner from '../LoadingSpinner'
 function RestaurantForm() {
 	let navigate = useNavigate()
 
-	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
+	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 	useEffect(() => {
-		getRestaurantData()
+		GetRestaurantData()
 	}, [])
 
 	useEffect(() => {

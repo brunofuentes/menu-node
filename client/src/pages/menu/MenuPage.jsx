@@ -6,10 +6,10 @@ import LoadingSpinner from '../../components/LoadingSpinner'
 
 function Menu() {
 	const { slug } = useParams()
-	const { restaurant, menuItems, getMenuRestaurantData } = useContext(MenuContext)
+	const { restaurant, menuItems, GetMenuRestaurantData } = useContext(MenuContext)
 
 	useEffect(() => {
-		getMenuRestaurantData(slug)
+		GetMenuRestaurantData(slug)
 	}, [slug])
 
 	let sections = []

@@ -6,7 +6,7 @@ export function MenuProvider({ children }) {
 	const [restaurant, setRestaurant] = useState(null)
 	const [menuItems, setMenuItems] = useState([])
 
-	const getMenuRestaurantData = (slug) => {
+	const GetMenuRestaurantData = (slug) => {
 		if (slug) {
 			fetch(`/api/restaurants/${slug}`, {
 				method: 'GET',
@@ -19,7 +19,7 @@ export function MenuProvider({ children }) {
 				})
 				.then((data) => {
 					setRestaurant(data.restaurant)
-					getMenuItemsData(data.restaurant.id)
+					GetMenuItemsData(data.restaurant.id)
 				})
 				.catch((err) => {
 					console.error('Error fetching data ', err)
@@ -27,7 +27,7 @@ export function MenuProvider({ children }) {
 		}
 	}
 
-	const getMenuItemsData = (id) => {
+	const GetMenuItemsData = (id) => {
 		if (id) {
 			fetch(`/api/${id}/items`, {
 				method: 'GET',
@@ -52,8 +52,8 @@ export function MenuProvider({ children }) {
 			value={{
 				restaurant,
 				menuItems,
-				getMenuRestaurantData,
-				getMenuItemsData,
+				GetMenuRestaurantData,
+				GetMenuItemsData,
 			}}
 		>
 			{children}

@@ -5,10 +5,10 @@ import LoadingSpinner from '../LoadingSpinner'
 
 function RestaurantData() {
 	const navigate = useNavigate()
-	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
+	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
 	useEffect(() => {
-		getRestaurantData()
+		GetRestaurantData()
 	}, [])
 
 	function handleClickEdit() {

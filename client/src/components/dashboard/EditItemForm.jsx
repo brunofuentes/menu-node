@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import RestaurantContext from '../../context/RestaurantContext'
 
 function MenuItemForm() {
-	const { item, createMenuItem, updateMenuItem } = useContext(RestaurantContext)
+	const { item, CreateMenuItem, UpdateMenuItem } = useContext(RestaurantContext)
 
 	const {
 		register,
@@ -14,10 +14,10 @@ function MenuItemForm() {
 	const onSubmit = (data) => {
 		if (item) {
 			console.log(data)
-			updateMenuItem(data, item.id)
+			UpdateMenuItem(data, item.id)
 		}
 		if (!item) {
-			createMenuItem(data)
+			CreateMenuItem(data)
 		}
 	}
 

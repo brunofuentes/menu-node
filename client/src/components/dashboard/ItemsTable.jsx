@@ -7,11 +7,11 @@ import './ItemsTable.css'
 
 function MenuData() {
 	let navigate = useNavigate()
-	const { items, setItem, getMenuData, deleteMenuItem } = useContext(RestaurantContext)
+	const { items, setItem, GetMenuData, DeleteMenuItem } = useContext(RestaurantContext)
 
 	useEffect(() => {
-		getMenuData()
-	}, [getMenuData])
+		GetMenuData()
+	}, [])
 
 	function handleAddNewItem() {
 		setItem(null)
@@ -20,7 +20,7 @@ function MenuData() {
 
 	function handleDelete(id) {
 		alert('Are you sure you want to delete this item from your menu?')
-		deleteMenuItem(id)
+		DeleteMenuItem(id)
 	}
 
 	function handleEdit(id) {

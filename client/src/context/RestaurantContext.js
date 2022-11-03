@@ -9,7 +9,7 @@ export function RestaurantProvider({ children }) {
 	const [items, setItems] = useState([])
 	const [item, setItem] = useState(null)
 
-	const getRestaurantData = async () => {
+	const GetRestaurantData = async () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 		if (restaurant_id) {
 			await fetch(`/api/restaurants/ids/${restaurant_id}`, {
@@ -33,7 +33,7 @@ export function RestaurantProvider({ children }) {
 		}
 	}
 
-	const getMenuData = () => {
+	const GetMenuData = () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 		if (restaurant_id) {
 			fetch(`/api/${restaurant_id}/items`, {
@@ -56,13 +56,13 @@ export function RestaurantProvider({ children }) {
 		}
 	}
 
-	const getMenuItemData = (id) => {
+	const GetMenuItemData = (id) => {
 		if (items) {
 			setItem(items.find((item) => item.id === id))
 		}
 	}
 
-	const createMenuItem = (data) => {
+	const CreateMenuItem = (data) => {
 		fetch('/api/items', {
 			method: 'POST',
 			headers: {
@@ -88,7 +88,7 @@ export function RestaurantProvider({ children }) {
 			})
 	}
 
-	const updateMenuItem = (data, item_id) => {
+	const UpdateMenuItem = (data, item_id) => {
 		fetch(`/api/items/${item_id}`, {
 			method: 'PATCH',
 			headers: {
@@ -114,7 +114,7 @@ export function RestaurantProvider({ children }) {
 			})
 	}
 
-	const deleteMenuItem = (id) => {
+	const DeleteMenuItem = (id) => {
 		fetch(`/api/items/${id}`, {
 			method: 'DELETE',
 		})
@@ -135,12 +135,12 @@ export function RestaurantProvider({ children }) {
 				items,
 				item,
 				setItem,
-				getRestaurantData,
-				getMenuData,
-				getMenuItemData,
-				createMenuItem,
-				updateMenuItem,
-				deleteMenuItem,
+				GetRestaurantData,
+				GetMenuData,
+				GetMenuItemData,
+				CreateMenuItem,
+				UpdateMenuItem,
+				DeleteMenuItem,
 			}}
 		>
 			{children}
