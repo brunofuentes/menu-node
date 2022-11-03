@@ -5,6 +5,7 @@ const UserContext = createContext()
 export function UserProvider({ children }) {
 	const [user, setUser] = useState(null)
 	const [isLogged, setIsLogged] = useState(false)
+	const [showSidebar, setShowSidebar] = useState(true)
 
 	const saveUserInfo = (user_data) => {
 		sessionStorage.setItem('token', user_data.token)
@@ -31,7 +32,9 @@ export function UserProvider({ children }) {
 	}
 
 	return (
-		<UserContext.Provider value={{ isLogged, user, saveUserInfo, GetUserStatus, logoutUser }}>
+		<UserContext.Provider
+			value={{ isLogged, user, saveUserInfo, GetUserStatus, logoutUser, showSidebar, setShowSidebar }}
+		>
 			{children}
 		</UserContext.Provider>
 	)
