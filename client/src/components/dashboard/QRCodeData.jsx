@@ -7,12 +7,12 @@ import LoadingSpinner from '../LoadingSpinner'
 function QRCodeData() {
 	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
 
-	// useEffect(() => {
-	// 	getRestaurantData()
-	// }, [])
-
 	const url = `https://menu-node-brunofuentes.vercel.app/${restaurant?.slug}/menu`
 	const [qrcode, setQrcode] = useState('')
+
+	useEffect(() => {
+		GenerateQRCode()
+	}, [])
 
 	const GenerateQRCode = () => {
 		getRestaurantData()
