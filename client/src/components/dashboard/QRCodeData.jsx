@@ -34,23 +34,25 @@ function QRCodeData() {
 	}
 
 	return (
-		<div className="text-center mx-3 max-x-fit border rounded">
+		<div className="text-center mx-3 max-w-sm border rounded shadow-md">
 			<div className="p-2">
 				<p className="text-lg font-semibold p-2">Restaurant QR-Code</p>
 
 				<div className="flex flex-col">
 					{qrcode && (
-						<a className="" href={url}>
-							<div className="flex flex-col">
+						<>
+							<a className="" href={url}>
 								<small>{url}</small>
-								<img src={qrcode} alt="Menu QR-Code" />
+							</a>
+							<div className="flex flex-col justify-center items-center">
+								<img height="200px" width="200px" className="m-3" src={qrcode} alt="Menu QR-Code" />
 							</div>
-						</a>
+						</>
 					)}
 					<div>
 						<button
 							onClick={() => GenerateQRCode()}
-							className="mx-1 inline-block bg-gray-800 rounded-lg p-2 hover:bg-gray-500"
+							className="hidden mx-1 bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
 							href={qrcode}
 							download="qrcode.png"
 						>
@@ -66,7 +68,7 @@ function QRCodeData() {
 							</div>
 						</button>
 						<a
-							className="mx-1 inline-block bg-gray-800 rounded-lg p-2 hover:bg-gray-500"
+							className="mx-1 inline-block bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
 							href={qrcode}
 							download="qrcode.png"
 						>
