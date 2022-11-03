@@ -1,14 +1,18 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar'
+import Sidebar from './dashboard/Sidebar'
 
 function AdminPageLayout() {
 	return (
 		<>
-			<div className="relative">
-				<Navbar />
-			</div>
-			<Outlet />
+			<Navbar />
+			<section className="flex mx-auto flex-col sm:flex-row">
+				<Sidebar />
+				<div className="p-3 flex flex-col w-full mx-auto">
+					<Outlet />
+				</div>
+			</section>
 		</>
 	)
 }
