@@ -36,59 +36,61 @@ function MenuData() {
 
 	return (
 		<div className="my-3">
-			<div className="flex justify-end my-2">
+			<div className="flex justify-end my-3">
 				<button
 					onClick={handleAddNewItem}
-					className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold p-2 rounded-xl inline-flex items-center"
+					className="mx-1 bg-gray-800 rounded-lg p-2 hover:bg-gray-500 shadow-md transition ease-out duration-300"
 				>
 					<div className="flex">
-						<img height="24px" width="24px" src="/images/icons/add_btn.svg" alt="" />
-						<span>Add New Item</span>
+						<img height="24px" width="24px" className="invert" src="/images/icons/add_btn.svg" alt="" />
+						<span className="px-1 text-white">Adicionar item</span>
 					</div>
 				</button>
 			</div>
-			<table className="table-auto mx-auto">
-				<thead className="bg-gray-600 text-white">
-					<tr>
-						<th>Item Image</th>
-						<th>Section</th>
-						<th>Item Name</th>
-						<th>Description</th>
-						<th>Price</th>
-						<th>Categories</th>
-						<th>Delete</th>
-						<th>Edit</th>
-					</tr>
-				</thead>
-				<tbody>
-					{items.map((item, index) => (
-						<tr key={index}>
-							<td>
-								<img height="150px" width="150px" src={item.imageUrl} alt="" />
-							</td>
-							<td>{item.section}</td>
-							<td>{item.name}</td>
-							<td className="break-normal">{item.description}</td>
-							<td>{item.price}</td>
-							<td>
-								{item.categories.map((cat, index) => (
-									<p key={index}>{cat}</p>
-								))}
-							</td>
-							<td className="text-center">
-								<button onClick={() => handleDelete(item.id)}>
-									<img height="16px" width="16px" src="/images/icons/delete_btn.svg" alt="" />
-								</button>
-							</td>
-							<td className="text-center">
-								<button onClick={() => handleEdit(item.id)}>
-									<img height="16px" width="16px" src="/images/icons/edit_btn.svg" alt="" />
-								</button>
-							</td>
+			<div className="overflow-auto h-[75vh] shadow-md">
+				<table className="table-auto mx-auto p-1">
+					<thead className="bg-gray-600 text-white">
+						<tr>
+							<th>Item Image</th>
+							<th>Section</th>
+							<th>Item Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Categories</th>
+							<th>Delete</th>
+							<th>Edit</th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{items.map((item, index) => (
+							<tr key={index}>
+								<td>
+									<img height="150px" width="150px" src={item.imageUrl} alt="" />
+								</td>
+								<td>{item.section}</td>
+								<td>{item.name}</td>
+								<td className="break-normal">{item.description}</td>
+								<td>{item.price}</td>
+								<td>
+									{item.categories.map((cat, index) => (
+										<p key={index}>{cat}</p>
+									))}
+								</td>
+								<td className="text-center">
+									<button onClick={() => handleDelete(item.id)}>
+										<img height="16px" width="16px" src="/images/icons/delete_btn.svg" alt="" />
+									</button>
+								</td>
+								<td className="text-center">
+									<button onClick={() => handleEdit(item.id)}>
+										<img height="16px" width="16px" src="/images/icons/edit_btn.svg" alt="" />
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	)
 }
