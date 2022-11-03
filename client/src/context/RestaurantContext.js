@@ -107,7 +107,7 @@ export function RestaurantProvider({ children }) {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log('Success:', data)
-				navigate('/dashboard')
+				navigate('/dashboard/menu')
 			})
 			.catch((err) => {
 				console.error('Error:', err)
