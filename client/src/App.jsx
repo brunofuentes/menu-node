@@ -16,8 +16,8 @@ import QRCodeData from './components/dashboard/QRCodeData'
 
 function App() {
 	return (
-		<UserProvider>
-			<Router>
+		<Router>
+			<UserProvider>
 				<RestaurantProvider>
 					<MenuProvider>
 						<Routes>
@@ -37,8 +37,8 @@ function App() {
 						</Routes>
 					</MenuProvider>
 				</RestaurantProvider>
-			</Router>
-		</UserProvider>
+			</UserProvider>
+		</Router>
 	)
 }
 
