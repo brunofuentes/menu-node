@@ -10,7 +10,7 @@ function Menu() {
 
 	useEffect(() => {
 		GetMenuRestaurantData(slug)
-	}, [slug])
+	}, [GetMenuRestaurantData, slug])
 
 	let sections = []
 	menuItems.map((item) => (sections.includes(item.section) ? null : sections.push(item.section)))
@@ -75,7 +75,7 @@ function Menu() {
 						<p className=" mt-5 py-2">
 							{' '}
 							Como podemos melhorar? Deixe-nos uma sugestão{' '}
-							<a className="underline" href="#">
+							<a className="underline" href="/">
 								aqui
 							</a>
 						</p>

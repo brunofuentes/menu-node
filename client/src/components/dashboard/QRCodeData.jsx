@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import QRCode from 'qrcode'
 import RestaurantContext from '../../context/RestaurantContext'
-import { useEffect } from 'react'
 import LoadingSpinner from '../LoadingSpinner'
 
 function QRCodeData() {
@@ -12,7 +11,7 @@ function QRCodeData() {
 
 	useEffect(() => {
 		GetRestaurantData()
-	}, [qrcode])
+	}, [GetRestaurantData, qrcode])
 
 	const GenerateQRCode = () => {
 		QRCode.toDataURL(
