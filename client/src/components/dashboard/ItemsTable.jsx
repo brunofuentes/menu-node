@@ -37,7 +37,7 @@ function MenuData() {
 					className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold p-2 rounded-xl inline-flex items-center"
 				>
 					<div className="flex">
-						<img height="24px" width="24px" src="images/icons/add_btn.svg" alt="" />
+						<img height="24px" width="24px" src="/images/icons/add_btn.svg" alt="" />
 						<span>Add New Item</span>
 					</div>
 				</button>
@@ -72,12 +72,12 @@ function MenuData() {
 							</td>
 							<td className="text-center">
 								<button onClick={() => handleDelete(item.id)}>
-									<img height="16px" width="16px" src="images/icons/delete_btn.svg" alt="" />
+									<img height="16px" width="16px" src="/images/icons/delete_btn.svg" alt="" />
 								</button>
 							</td>
 							<td className="text-center">
 								<button onClick={() => handleEdit(item.id)}>
-									<img height="16px" width="16px" src="images/icons/edit_btn.svg" alt="" />
+									<img height="16px" width="16px" src="/images/icons/edit_btn.svg" alt="" />
 								</button>
 							</td>
 						</tr>

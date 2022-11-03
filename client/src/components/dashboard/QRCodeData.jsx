@@ -53,7 +53,7 @@ function QRCodeData() {
 									className="invert"
 									height="18px"
 									width="18px"
-									src="images/icons/download_icon.svg"
+									src="/images/icons/download_icon.svg"
 									alt=""
 								/>
 								<span className="px-1 text-white">Generate</span>
@@ -69,7 +69,7 @@ function QRCodeData() {
 									className="invert"
 									height="18px"
 									width="18px"
-									src="images/icons/download_icon.svg"
+									src="/images/icons/download_icon.svg"
 									alt=""
 								/>
 								<span className="px-1 text-white">Download</span>
