@@ -23,7 +23,7 @@ function LoginForm() {
 			},
 		})
 			.then((res) => res.json())
-			.then((data) => navigate('/dashboard'))
+			.then((data) => navigate('/dashboard/menu'))
 			.catch((err) => {
 				navigate('/login')
 			})

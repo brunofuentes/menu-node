@@ -32,7 +32,7 @@ function Navbar() {
 			<div className="flex mx-2 sm:mx-5">
 				{isLogged ? (
 					<div>
-						<Link to="/dashboard/restaurant">Dashboard</Link>
+						<Link to="/dashboard/menu">Dashboard</Link>
 						<button
 							onClick={() => {
 								logoutUser()
