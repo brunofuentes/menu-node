@@ -9,7 +9,7 @@ function AdminPageLayout() {
 			<Navbar />
 			<section className="flex mx-auto flex-col sm:flex-row">
 				<Sidebar />
-				<div className="p-3 flex flex-col w-full mx-auto">
+				<div className=" p-3 flex flex-col w-9/12 mx-auto">
 					<Outlet />
 				</div>
 			</section>
