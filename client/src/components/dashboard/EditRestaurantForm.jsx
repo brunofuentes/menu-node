@@ -13,21 +13,6 @@ function RestaurantForm() {
 		GetRestaurantData()
 	}, [])
 
-	useEffect(() => {
-		const token = sessionStorage.getItem('token')
-		fetch('/api/protected', {
-			method: 'GET',
-			headers: {
-				Authorization: token,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {})
-			.catch((err) => {
-				navigate('/login')
-			})
-	}, [navigate])
-
 	const {
 		register,
 		handleSubmit,
