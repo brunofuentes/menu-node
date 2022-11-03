@@ -6,6 +6,7 @@ function RegisterForm() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm()
+
 	const onSubmit = (data) => {
 		if (data.password !== data.confirm_password) {
 			alert("Password doesn't match!")
