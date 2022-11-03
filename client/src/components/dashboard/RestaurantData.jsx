@@ -20,7 +20,7 @@ function RestaurantData() {
 	}
 
 	return (
-		<div className="mx-3 border max-w-fit rounded relative">
+		<div className="mx-3 border max-w-fit rounded relative shadow-md">
 			{restaurant ? (
 				<div>
 					<div className="flex justify-between p-2">
