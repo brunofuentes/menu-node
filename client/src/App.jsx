@@ -13,6 +13,7 @@ import RegisterPage from './pages/auth/RegisterPage'
 import RestaurantData from './components/dashboard/RestaurantData'
 import ItemsTable from './components/dashboard/ItemsTable'
 import QRCodeData from './components/dashboard/QRCodeData'
+import PageLayout from './components/PageLayout'
 
 function App() {
 	return (
@@ -22,10 +23,12 @@ function App() {
 					<MenuProvider>
 						<Routes>
 							<Route path="/:slug/menu" element={<MenuPage />} />
-							<Route element={<AdminPageLayout />}>
+							<Route element={<PageLayout />}>
 								<Route path="/" element={<Home />} />
 								<Route path="/login" element={<LoginPage />} />
 								<Route path="/register" element={<RegisterPage />} />
+							</Route>
+							<Route element={<AdminPageLayout />}>
 								<Route path="/dashboard" element={<DashboardPage />} />
 								<Route path="/dashboard/restaurant" element={<RestaurantData />} />
 								<Route path="/dashboard/edit-restaurant" element={<EditRestaurantPage />} />
