@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
+import LoadingSpinner from '../LoadingSpinner'
 
 function RestaurantData() {
 	const navigate = useNavigate()
@@ -12,6 +13,10 @@ function RestaurantData() {
 
 	function handleClickEdit() {
 		navigate('/dashboard/edit-restaurant')
+	}
+
+	if (!restaurant) {
+		return <LoadingSpinner />
 	}
 
 	return (

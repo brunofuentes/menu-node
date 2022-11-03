@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
+import LoadingSpinner from '../LoadingSpinner'
 
 function RestaurantForm() {
 	let navigate = useNavigate()
@@ -35,6 +36,8 @@ function RestaurantForm() {
 	const onSubmit = (data) => {
 		console.log(data)
 		navigate('/dashboard')
+	if (!restaurant) {
+		return <LoadingSpinner />
 	}
 
 	return (

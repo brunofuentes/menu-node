@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import QRCode from 'qrcode'
 import RestaurantContext from '../../context/RestaurantContext'
 import { useEffect } from 'react'
+import LoadingSpinner from '../LoadingSpinner'
 
 function QRCodeData() {
 	const { restaurant, getRestaurantData } = useContext(RestaurantContext)
@@ -27,6 +28,11 @@ function QRCodeData() {
 			}
 		)
 	}
+
+	if (!restaurant) {
+		return <LoadingSpinner />
+	}
+
 	return (
 		<div className="text-center mx-3 max-x-fit border rounded">
 			<div className="p-2">
