@@ -11,10 +11,10 @@ import EditRestaurantPage from './pages/dashboard/EditRestaurantPage'
 import EditItemPage from './pages/dashboard/EditItemPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import RestaurantData from './components/dashboard/RestaurantData'
-import ItemsTable from './components/dashboard/ItemsTable'
 import QRCodeData from './components/dashboard/QRCodeData'
 import PageLayout from './components/PageLayout'
 import UserPage from './pages/dashboard/UserPage'
+import MenuItemsPage from './pages/dashboard/MenuItemsPage'
 
 function App() {
 	return (
@@ -34,7 +34,7 @@ function App() {
 								<Route path="/dashboard" element={<DashboardPage />} />
 								<Route path="/dashboard/restaurant" element={<RestaurantData />} />
 								<Route path="/dashboard/edit-restaurant" element={<EditRestaurantPage />} />
-								<Route path="/dashboard/menu" element={<ItemsTable />} />
+								<Route path="/dashboard/menu" element={<MenuItemsPage />} />
 								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
 								<Route path="/dashboard/add-item" element={<EditItemPage />} />
 								<Route path="/dashboard/qr-code" element={<QRCodeData />} />
