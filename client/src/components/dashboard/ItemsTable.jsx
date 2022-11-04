@@ -27,7 +27,7 @@ function MenuData() {
 		navigate(`/dashboard/edit-item/${id}`)
 	}
 
-	if (!items) {
+	if (items.length < 1) {
 		return <LoadingSpinner />
 	}
 
