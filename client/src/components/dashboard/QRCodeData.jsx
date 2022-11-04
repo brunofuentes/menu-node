@@ -9,9 +9,7 @@ function QRCodeData() {
 	const url = `https://menu-node.vercel.app/${restaurant?.slug}/menu`
 	const [qrcode, setQrcode] = useState(null)
 
-	useEffect(() => {
-		GetRestaurantData()
-	}, [GetRestaurantData, qrcode])
+	GetRestaurantData()
 
 	const GenerateQRCode = () => {
 		QRCode.toDataURL(

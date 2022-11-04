@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { createContext, useState } from 'react'
 
 const MenuContext = createContext()
@@ -7,7 +8,7 @@ export function MenuProvider({ children }) {
 	const [menuItems, setMenuItems] = useState([])
 
 	const GetMenuRestaurantData = (slug) => {
-		if (slug) {
+		useEffect(() => {
 			fetch(`/api/restaurants/${slug}`, {
 				method: 'GET',
 			})
@@ -24,7 +25,7 @@ export function MenuProvider({ children }) {
 				.catch((err) => {
 					console.error('Error fetching data ', err)
 				})
-		}
+		}, [slug])
 	}
 
 	const GetMenuItemsData = (id) => {

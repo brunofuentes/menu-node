@@ -7,9 +7,7 @@ function RestaurantData() {
 	const navigate = useNavigate()
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
-	useEffect(() => {
-		GetRestaurantData()
-	}, [GetRestaurantData])
+	GetRestaurantData()
 
 	function handleClickEdit() {
 		navigate('/dashboard/edit-restaurant')

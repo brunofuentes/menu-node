@@ -10,10 +10,11 @@ export function RestaurantProvider({ children }) {
 	const [items, setItems] = useState([])
 	const [item, setItem] = useState(null)
 
-	const GetRestaurantData = async () => {
+	const GetRestaurantData = () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
-		if (restaurant_id) {
-			await fetch(`/api/restaurants/ids/${restaurant_id}`, {
+
+		useEffect(() => {
+			fetch(`/api/restaurants/ids/${restaurant_id}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -31,11 +32,12 @@ export function RestaurantProvider({ children }) {
 				.catch((err) => {
 					console.error('Error fetching data ', err)
 				})
-		}
+		}, [restaurant_id])
 	}
 
 	const GetMenuData = () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
+
 		useEffect(() => {
 			fetch(`/api/${restaurant_id}/items`, {
 				method: 'GET',

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import MenuContext from '../../context/MenuContext'
 import DynamicNavbar from '../../components/menu/DynamicNavbar'
@@ -8,9 +8,7 @@ function Menu() {
 	const { slug } = useParams()
 	const { restaurant, menuItems, GetMenuRestaurantData } = useContext(MenuContext)
 
-	useEffect(() => {
-		GetMenuRestaurantData(slug)
-	}, [GetMenuRestaurantData, slug])
+	GetMenuRestaurantData(slug)
 
 	let sections = []
 	menuItems.map((item) => (sections.includes(item.section) ? null : sections.push(item.section)))

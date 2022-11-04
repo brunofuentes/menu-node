@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
 import RestaurantContext from '../../context/RestaurantContext'
 import LoadingSpinner from '../LoadingSpinner'
 
@@ -9,9 +8,8 @@ function RestaurantForm() {
 	let navigate = useNavigate()
 
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
-	useEffect(() => {
-		GetRestaurantData()
-	}, [])
+
+	GetRestaurantData()
 
 	const {
 		register,
