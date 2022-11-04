@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
 import LoadingSpinner from '../LoadingSpinner'
@@ -8,9 +8,7 @@ function MenuData() {
 	let navigate = useNavigate()
 	const { items, setItem, GetMenuData, DeleteMenuItem } = useContext(RestaurantContext)
 
-	useEffect(() => {
-		GetMenuData()
-	}, [GetMenuData])
+	GetMenuData()
 
 	function handleAddNewItem() {
 		setItem(null)

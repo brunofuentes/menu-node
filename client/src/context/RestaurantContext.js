@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { createContext, useState } from 'react'
 import { useNavigate } from 'react-router'
 
@@ -35,7 +36,7 @@ export function RestaurantProvider({ children }) {
 
 	const GetMenuData = () => {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
-		if (restaurant_id) {
+		useEffect(() => {
 			fetch(`/api/${restaurant_id}/items`, {
 				method: 'GET',
 			})
@@ -53,7 +54,7 @@ export function RestaurantProvider({ children }) {
 				.catch((err) => {
 					console.error('Error fetching data ', err)
 				})
-		}
+		}, [restaurant_id])
 	}
 
 	const GetMenuItemData = (id) => {
