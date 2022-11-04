@@ -18,7 +18,7 @@ function RestaurantData() {
 	}
 
 	return (
-		<div className="mx-3 border max-w-fit rounded relative shadow-md">
+		<div className="mx-3 border max-w-sm rounded relative shadow-md">
 			{restaurant ? (
 				<div>
 					<div className="flex justify-between p-2">
@@ -29,7 +29,7 @@ function RestaurantData() {
 							</button>
 						</span>
 					</div>
-					<div className="max-w-sm p-2">
+					<div className="p-2">
 						<ul>
 							<li>
 								<span className="font-semibold">Cover Photo:</span>
