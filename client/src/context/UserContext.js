@@ -7,6 +7,7 @@ export function UserProvider({ children }) {
 	let userLS = {
 		token: sessionStorage.getItem('token'),
 		id: sessionStorage.getItem('id'),
+		email: sessionStorage.getItem('email'),
 		username: sessionStorage.getItem('username'),
 		firstName: sessionStorage.getItem('firstName'),
 		lastName: sessionStorage.getItem('lastName'),
@@ -22,6 +23,7 @@ export function UserProvider({ children }) {
 	const SaveUserInfo = (user_data) => {
 		sessionStorage.setItem('token', user_data.token)
 		sessionStorage.setItem('id', user_data.id)
+		sessionStorage.setItem('email', user_data.email)
 		sessionStorage.setItem('username', user_data.username)
 		sessionStorage.setItem('firstName', user_data.firstName)
 		sessionStorage.setItem('lastName', user_data.lastName)
