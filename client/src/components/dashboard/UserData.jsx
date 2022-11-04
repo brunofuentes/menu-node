@@ -13,7 +13,7 @@ function UserData() {
 		console.log('function not yet implemented')
 	}
 
-	if (!user) {
+	if (!user && !restaurant) {
 		return <LoadingSpinner />
 	}
 
