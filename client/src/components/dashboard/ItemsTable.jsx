@@ -46,23 +46,23 @@ function MenuData() {
 			</div>
 			<div className="overflow-auto h-[75vh] shadow-md">
 				<table className="table-auto mx-auto p-1">
-					<thead className="bg-gray-600 text-white">
+					<thead className="bg-gray-800 text-white">
 						<tr>
-							<th>Item Image</th>
-							<th>Section</th>
-							<th>Item Name</th>
-							<th>Description</th>
-							<th>Price</th>
-							<th>Categories</th>
-							<th>Delete</th>
-							<th>Edit</th>
+							<th className="whitespace-nowrap">Item Image</th>
+							<th className="p-3">Section</th>
+							<th className="p-3">Item Name</th>
+							<th className="p-3">Description</th>
+							<th className="p-3">Price</th>
+							<th className="p-3">Categories</th>
+							<th className="p-3">Delete</th>
+							<th className="p-3">Edit</th>
 						</tr>
 					</thead>
 					<tbody>
 						{items.map((item, index) => (
 							<tr key={index}>
 								<td>
-									<img height="150px" width="150px" src={item.imageUrl} alt="" />
+									<img height="36" width="60" className="flex flex-none" src={item.imageUrl} alt="" />
 								</td>
 								<td>{item.section}</td>
 								<td>{item.name}</td>
