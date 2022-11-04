@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { UserProvider } from './context/UserContext'
 import { RestaurantProvider } from './context/RestaurantContext'
 import { MenuProvider } from './context/MenuContext'
@@ -27,6 +27,7 @@ function App() {
 								<Route path="/" element={<Home />} />
 								<Route path="/login" element={<LoginPage />} />
 								<Route path="/register" element={<RegisterPage />} />
+								<Route path="*" element={<Navigate to="/" replace />} />
 							</Route>
 							<Route element={<AdminPageLayout />}>
 								<Route path="/dashboard" element={<DashboardPage />} />
@@ -36,6 +37,7 @@ function App() {
 								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
 								<Route path="/dashboard/add-item" element={<EditItemPage />} />
 								<Route path="/dashboard/qr-code" element={<QRCodeData />} />
+								<Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
 							</Route>
 						</Routes>
 					</MenuProvider>
