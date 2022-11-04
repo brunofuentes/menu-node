@@ -10,7 +10,7 @@ function Navbar() {
 	let navigate = useNavigate()
 
 	return (
-		<nav className="sticky text-white text-xl bg-slate-500 flex items-center justify-between h-[8vh] shadow-md">
+		<nav className="sticky text-white text-xl bg-red-500 flex items-center justify-between h-[8vh] shadow-md">
 			{isLogged && (
 				<div className="mx-2 sm:mx-5">
 					<button onClick={() => setShowSidebar(!showSidebar)}>
