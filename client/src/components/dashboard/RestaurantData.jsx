@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
 import LoadingSpinner from '../LoadingSpinner'

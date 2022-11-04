@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import QRCode from 'qrcode'
 import RestaurantContext from '../../context/RestaurantContext'
 import LoadingSpinner from '../LoadingSpinner'
