@@ -11,7 +11,7 @@ function Home() {
 						cardápios digitais.
 					</p>
 				</div>
-				<div className="bg-slate-500 text-white text-center font-medium rounded-2xl p-3 hover:bg-slate-400 transition-color duration-200 transform hover:scale-110">
+				<div className="bg-red-500 text-white text-center font-medium rounded-2xl p-3 hover:bg-red-400 transition-color duration-200 transform hover:scale-110">
 					<div className="p-1">Cardápio de Exemplo</div>
 					<img width={200} height={200} src="/images/pacoda-veronese-vercel.png" alt="" />
 				</div>
