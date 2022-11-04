@@ -64,8 +64,8 @@ const DynamicNavbar = () => {
 	useIntersectionObserver(setActiveId)
 
 	return (
-		<div className="container overflow-x-auto sticky top-0 mx-auto bg-white py-1">
-			<nav className="mx-auto flex max-w-2xl gap-4 px-4">
+		<div className="overflow-x-auto scrollbar-hide sticky top-0 mx-auto bg-gray-200 py-2">
+			<nav className="mx-auto flex max-w-2xl gap-3 px-2">
 				{nestedHeadings.map((heading) => {
 					const activeClasses = heading.id === activeId ? 'bg-black text-white' : ''
 					return (
