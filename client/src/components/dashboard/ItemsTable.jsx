@@ -48,14 +48,14 @@ function MenuData() {
 				<table className="table-auto mx-auto p-1">
 					<thead className="bg-gray-800 text-white">
 						<tr>
-							<th className="whitespace-nowrap">Item Image</th>
-							<th className="p-3">Section</th>
-							<th className="p-3">Item Name</th>
-							<th className="p-3">Description</th>
-							<th className="p-3">Price</th>
-							<th className="p-3">Categories</th>
-							<th className="p-3">Delete</th>
-							<th className="p-3">Edit</th>
+							<th className="whitespace-nowrap">Foto do Item</th>
+							<th className="p-3">Secção</th>
+							<th className="p-3">Nome do Item</th>
+							<th className="p-3">Descrição do Item</th>
+							<th className="p-3">Preço (R$)</th>
+							<th className="p-3">Detalhes</th>
+							<th className="p-3">Editar</th>
+							<th className="p-3">Deletar</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,13 +74,13 @@ function MenuData() {
 									))}
 								</td>
 								<td className="text-center">
-									<button onClick={() => handleDelete(item.id)}>
-										<img height="16px" width="16px" src="/images/icons/delete_btn.svg" alt="" />
+									<button onClick={() => handleEdit(item.id)}>
+										<img height="16px" width="16px" src="/images/icons/edit_btn.svg" alt="" />
 									</button>
 								</td>
 								<td className="text-center">
-									<button onClick={() => handleEdit(item.id)}>
-										<img height="16px" width="16px" src="/images/icons/edit_btn.svg" alt="" />
+									<button onClick={() => handleDelete(item.id)}>
+										<img height="16px" width="16px" src="/images/icons/delete_btn.svg" alt="" />
 									</button>
 								</td>
 							</tr>

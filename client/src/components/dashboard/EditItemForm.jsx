@@ -23,17 +23,17 @@ function MenuItemForm() {
 
 	return (
 		<section className="text-sm w-1/2 mx-auto">
-			<p className="text-xl font-bold text-center p-2">Item Details</p>
+			<p className="text-xl font-bold text-center p-2">Detalhes do Item</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
 				<form onSubmit={handleSubmit(onSubmit)} key={item?.id} className="space-y-6">
 					<div className="flex gap-2">
 						<div>
-							<p className="text-sm font-bold text-gray-600 block">Current Image:</p>
+							<p className="text-sm font-bold text-gray-600 block">Foto atual:</p>
 							<img className="rounded" height="250px" width="250px" src={item?.imageUrl} alt="" />
 						</div>
 						<div>
 							<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-								Change current image:
+								Trocar foto:
 							</label>
 							<input
 								{...register('imageUrl')}
@@ -47,7 +47,7 @@ function MenuItemForm() {
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Section
+							Secção
 						</label>
 						<input
 							{...register('section', {
@@ -58,11 +58,11 @@ function MenuItemForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
-						{errors.section && <span className="text-sm">Item Section is Required</span>}
+						{errors.section && <span className="text-sm">Secção do item é obrigatoria.</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Item Name
+							Nome do Item
 						</label>
 						<input
 							{...register('name', {
@@ -73,11 +73,11 @@ function MenuItemForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
-						{errors.name && <span className="text-sm">Item Name is Required</span>}
+						{errors.name && <span className="text-sm">Nome do Item é obrigatório.</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Item Description
+							Descrição do Item
 						</label>
 						<input
 							{...register('description', {
@@ -88,11 +88,11 @@ function MenuItemForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
-						{errors.description && <span className="text-sm">Item Description is Required</span>}
+						{errors.description && <span className="text-sm">Descrição do Item é obrigatória.</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Item Price
+							Preço
 						</label>
 						<input
 							{...register('price', {
@@ -103,11 +103,11 @@ function MenuItemForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
-						{errors.price && <span className="text-sm">Item Price is Required</span>}
+						{errors.price && <span className="text-sm">Preço é obrigatório</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Item Categories
+							Detalhes
 						</label>
 						<input
 							{...register('categories')}
@@ -116,14 +116,13 @@ function MenuItemForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
-						{errors.categories && <span className="text-sm">Item categories is Required</span>}
 					</div>
 					<div>
 						<button
 							type="submit"
 							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
 						>
-							Save
+							Salvar
 						</button>
 					</div>
 				</form>

@@ -32,7 +32,7 @@ function QRCodeData() {
 	return (
 		<div className="text-center mx-3 max-w-sm border rounded shadow-md">
 			<div className="p-2">
-				<p className="text-lg font-semibold p-2">Restaurant QR-Code</p>
+				<p className="text-lg font-semibold p-2">Gerador de código QR-Code</p>
 
 				<div className="flex flex-col">
 					{qrcode && (
@@ -61,7 +61,7 @@ function QRCodeData() {
 									src="/images/icons/download_icon.svg"
 									alt=""
 								/>
-								<span className="px-1 text-white">Generate</span>
+								<span className="px-1 text-white">Gerar QR-Code</span>
 							</div>
 						</button>
 						<a

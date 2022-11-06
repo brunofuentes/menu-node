@@ -28,12 +28,12 @@ function RestaurantForm() {
 
 	return (
 		<section className="text-sm w-9/12 mx-auto">
-			<p className="text-xl font-bold text-center p-2">Restaurant Details</p>
+			<p className="text-xl font-bold text-center p-2">Detalhes do Restaurante</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
 				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6">
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Cover Photo
+							Foto de Capa
 						</label>
 						<input
 							{...register('imageUrl')}
@@ -46,7 +46,7 @@ function RestaurantForm() {
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Restaurant Name
+							Nome
 						</label>
 						<input
 							{...register('name', {
@@ -57,11 +57,11 @@ function RestaurantForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
-						{errors.name && <span className="text-sm">Restaurant Name is Required</span>}
+						{errors.name && <span className="text-sm">Adicionar um nome é obrigatório.</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Description
+							Descrição
 						</label>
 						<textarea
 							{...register('description', {
@@ -73,11 +73,11 @@ function RestaurantForm() {
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></textarea>
-						{errors.description && <span>Description is too long</span>}
+						{errors.description && <span>Uma descrição é obrigatória.</span>}
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Address
+							Endereço
 						</label>
 						<input
 							{...register('address', {
@@ -92,7 +92,7 @@ function RestaurantForm() {
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Phone
+							Telefone
 						</label>
 						<input
 							{...register('phone', {
@@ -108,7 +108,7 @@ function RestaurantForm() {
 
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Website Link
+							Página Web
 						</label>
 						<input
 							{...register('websiteUrl')}
@@ -121,7 +121,7 @@ function RestaurantForm() {
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Instagram Link
+							Página do Instagram
 						</label>
 						<input
 							{...register('instagramUrl')}
@@ -134,7 +134,7 @@ function RestaurantForm() {
 					</div>
 					<div>
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
-							Facebook Link
+							Página do Facebook
 						</label>
 						<input
 							{...register('facebookUrl')}
@@ -150,7 +150,7 @@ function RestaurantForm() {
 							type="submit"
 							className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white"
 						>
-							Save
+							Salvar
 						</button>
 					</div>
 				</form>
