@@ -15,7 +15,7 @@ function AdminPageLayout() {
 			<Navbar />
 			<section className="flex mx-auto flex-col sm:flex-row">
 				<Sidebar />
-				<div className=" p-3 flex flex-col w-9/12 mx-auto">
+				<div className=" p-3 flex flex-col  w-11/12 sm:w-9/12 mx-auto">
 					<Outlet />
 				</div>
 			</section>

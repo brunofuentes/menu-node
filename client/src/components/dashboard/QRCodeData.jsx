@@ -49,7 +49,7 @@ function QRCodeData() {
 					<div>
 						<button
 							onClick={() => GenerateQRCode()}
-							className="mx-1 bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
+							className="m-1 bg-gray-800 rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300"
 							href={qrcode}
 							download="qrcode.png"
 						>
@@ -67,7 +67,7 @@ function QRCodeData() {
 						<a
 							className={`${
 								qrcode ? 'bg-gray-800' : 'pointer-events-none bg-gray-400'
-							} mx-1 inline-block  rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300`}
+							} m-1 inline-block  rounded-lg p-2 hover:bg-gray-500 transition ease-out duration-300`}
 							href={qrcode}
 							download="qrcode.png"
 						>
