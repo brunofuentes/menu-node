@@ -68,53 +68,27 @@ export function RestaurantProvider({ children }) {
 	const CreateMenuItem = (data) => {
 		fetch('/api/items', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name: data.name,
-				description: data.description,
-				price: data.price,
-				section: data.section,
-				imageUrl: data.imageUrl,
-				categories: data.categories.split(',').map((x) => x.trim()),
-				restaurant_id: sessionStorage.getItem('restaurant_id'),
-			}),
+			headers: {},
+			body: data,
 		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log('Success:', data)
-				navigate('/dashboard')
+			.then((res) => {
+				console.log(res)
+				navigate('/dashboard/menu')
 			})
-			.catch((err) => {
-				console.error('Error:', err)
-			})
+			.catch((err) => console.error(err))
 	}
 
 	const UpdateMenuItem = (data, item_id) => {
 		fetch(`/api/items/${item_id}`, {
 			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				name: data.name,
-				description: data.description,
-				price: data.price,
-				section: data.section,
-				imageUrl: data.imageUrl,
-				categories: data.categories.split(',').map((x) => x.trim()),
-				restaurant_id: sessionStorage.getItem('restaurant_id'),
-			}),
+			headers: {},
+			body: data,
 		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log('Success:', data)
+			.then((res) => {
+				console.log(res)
 				navigate('/dashboard/menu')
 			})
-			.catch((err) => {
-				console.error('Error:', err)
-			})
+			.catch((err) => console.log(err))
 	}
 
 	const DeleteMenuItem = (id) => {

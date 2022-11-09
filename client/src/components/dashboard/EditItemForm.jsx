@@ -12,12 +12,21 @@ function MenuItemForm() {
 	} = useForm()
 
 	const onSubmit = (data) => {
+		const formData = new FormData()
+
+		formData.append('section', data.section)
+		formData.append('name', data.name)
+		formData.append('description', data.description)
+		formData.append('price', data.price)
+		formData.append('categories', data.categories)
+		formData.append('restaurant_id', sessionStorage.getItem('restaurant_id'))
+		formData.append('file', data.file[0])
+
 		if (item) {
-			console.log(data)
-			UpdateMenuItem(data, item.id)
+			UpdateMenuItem(formData, item.id)
 		}
 		if (!item) {
-			CreateMenuItem(data)
+			CreateMenuItem(formData)
 		}
 	}
 
@@ -25,7 +34,12 @@ function MenuItemForm() {
 		<section className="text-sm w-1/2 mx-auto">
 			<p className="text-xl font-bold text-center p-2">Detalhes do Item</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
-				<form onSubmit={handleSubmit(onSubmit)} key={item?.id} className="space-y-6">
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					key={item?.id}
+					className="space-y-6"
+					encType="multipart/form-data"
+				>
 					<div className="flex gap-2">
 						<div>
 							<p className="text-sm font-bold text-gray-600 block">Foto atual:</p>
@@ -36,13 +50,13 @@ function MenuItemForm() {
 								Trocar foto:
 							</label>
 							<input
-								{...register('imageUrl')}
+								{...register('file')}
 								style={{ borderColor: errors.imageUrl ? 'red' : '' }}
-								defaultValue={item?.imageUrl}
+								accept="image/*"
+								name="file"
 								className="border-gray-300 rounded w-full p-2 border mt-1"
-								type="url"
+								type="file"
 							></input>
-							{errors.imageUrl}
 						</div>
 					</div>
 					<div>
