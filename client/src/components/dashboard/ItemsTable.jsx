@@ -6,7 +6,7 @@ import './ItemsTable.css'
 
 function MenuData() {
 	let navigate = useNavigate()
-	const { items, setItem, GetMenuData, DeleteMenuItem } = useContext(RestaurantContext)
+	const { items, setItem, GetMenuData, DeleteMenuItem, GetMenuItemData } = useContext(RestaurantContext)
 
 	GetMenuData()
 
@@ -21,9 +21,7 @@ function MenuData() {
 	}
 
 	function handleEdit(id) {
-		if (items) {
-			setItem(items.find((item) => item.id === id))
-		}
+		GetMenuItemData(id)
 		navigate(`/dashboard/edit-item/${id}`)
 	}
 
