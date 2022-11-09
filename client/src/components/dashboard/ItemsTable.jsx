@@ -16,8 +16,7 @@ function MenuData() {
 	}
 
 	function handleDelete(id) {
-		alert('Are you sure you want to delete this item from your menu?')
-		DeleteMenuItem(id)
+		window.confirm('Are you sure you want to delete this item from your menu?') && DeleteMenuItem(id)
 	}
 
 	function handleEdit(id) {
