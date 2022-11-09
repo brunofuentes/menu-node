@@ -66,9 +66,7 @@ function MenuData() {
 								<td className="break-normal">{item.description}</td>
 								<td>{item.price}</td>
 								<td>
-									{item.categories.map((cat, index) => (
-										<p key={index}>{cat}</p>
-									))}
+									{item.categories && item.categories.map((cat, index) => <p key={index}>{cat}</p>)}
 								</td>
 								<td className="text-center">
 									<button onClick={() => handleEdit(item.id)}>

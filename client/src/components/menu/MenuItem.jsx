@@ -13,11 +13,14 @@ function MenuItem(props) {
 					<p className="py-1 text-xs">{item.description}</p>
 					<span>R${item.price}</span>
 					<p>
-						{item.categories.map((category, cat_index) => (
-							<span key={cat_index} className="mx-1 text-sm bg-yellow-100 px-0.5 rounded-md">
-								<small>{category}</small>
-							</span>
-						))}
+						{item?.categories?.map(
+							(category, cat_index) =>
+								category.length > 1 && (
+									<span key={cat_index} className="mx-1 text-sm bg-yellow-100 px-0.5 rounded-md">
+										<small>{category}</small>
+									</span>
+								)
+						)}
 					</p>
 				</div>
 				<div className="flex flex-none items-center justify-center">

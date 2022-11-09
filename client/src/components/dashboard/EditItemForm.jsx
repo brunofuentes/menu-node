@@ -126,7 +126,7 @@ function MenuItemForm() {
 						<input
 							{...register('categories')}
 							style={{ borderColor: errors.categories ? 'red' : '' }}
-							defaultValue={item?.categories.join()}
+							defaultValue={item?.categories?.join()}
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
