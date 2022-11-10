@@ -16,19 +16,49 @@ export function UserProvider({ children }) {
 		restaurant_id: sessionStorage.getItem('restaurant_id'),
 	}
 
-	const [user, setUser] = useState(userLS || null)
+	const [user, setUser] = useState(null)
 	const [isLogged, setIsLogged] = useState(false)
 	const [showSidebar, setShowSidebar] = useState(true)
 
 	const SaveUserInfo = (user_data) => {
 		sessionStorage.setItem('token', user_data.token)
-		sessionStorage.setItem('id', user_data.id)
-		sessionStorage.setItem('email', user_data.email)
-		sessionStorage.setItem('username', user_data.username)
-		sessionStorage.setItem('firstName', user_data.firstName)
-		sessionStorage.setItem('lastName', user_data.lastName)
-		sessionStorage.setItem('restaurant_id', user_data.restaurant_id)
-		setUser(user_data)
+		sessionStorage.setItem('id', user_data.user.id)
+		sessionStorage.setItem('email', user_data.user.email)
+		sessionStorage.setItem('username', user_data.user.username)
+		sessionStorage.setItem('firstName', user_data.user.firstName)
+		sessionStorage.setItem('lastName', user_data.user.lastName)
+		sessionStorage.setItem('restaurant_id', user_data.user.restaurant_id)
+	}
+
+	const LoginUser = (data) => {
+		fetch(`/api/sign-in`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: data.email,
+				password: data.password,
+			}),
+		})
+			.then((res) => {
+				if (res.ok) {
+					return res.json()
+				}
+				throw res
+			})
+			.then((data) => {
+				if (data.success) {
+					SaveUserInfo(data)
+					setUser(data.user)
+					navigate('/dashboard')
+				}
+				return { message: data.message }
+			})
+			.catch((err) => {
+				console.log(err)
+				navigate('/login')
+			})
 	}
 
 	const logoutUser = () => {
@@ -50,6 +80,7 @@ export function UserProvider({ children }) {
 				.then((data) => {
 					if (data.success) {
 						setIsLogged(true)
+						setUser(data.user)
 					}
 				})
 				.catch((err) => {
@@ -61,28 +92,34 @@ export function UserProvider({ children }) {
 		}, [token])
 	}
 
-	const LoginUser = (data) => {
-		fetch(`/api/sign-in`, {
-			method: 'POST',
+	const UpdateUser = (data) => {
+		fetch(`/api/users/${data.id}`, {
+			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				firstName: data.firstName,
+				lastName: data.lastName,
 				email: data.email,
-				password: data.password,
+				username: data.username,
+				restaurant_id: data.restaurant_id,
 			}),
 		})
-			.then((res) => res.json())
-			.then((user) => {
-				if (user.success) {
-					SaveUserInfo(user)
-					navigate('/dashboard')
+			.then((res) => {
+				if (res.ok) {
+					return res.json()
 				}
-				return { message: user.message }
+				throw res
+			})
+			.then((data) => {
+				if (data.success) {
+					SaveUserInfo(data)
+				}
+				return { message: data.message }
 			})
 			.catch((err) => {
 				console.log(err)
-				navigate('/login')
 			})
 	}
 
@@ -91,12 +128,14 @@ export function UserProvider({ children }) {
 			value={{
 				isLogged,
 				user,
+				setUser,
 				SaveUserInfo,
 				logoutUser,
 				showSidebar,
 				setShowSidebar,
 				AuthenticateUser,
 				LoginUser,
+				UpdateUser,
 			}}
 		>
 			{children}
