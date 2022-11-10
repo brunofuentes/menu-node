@@ -67,13 +67,15 @@ module.exports = {
 				return res.status(200).send({
 					success: true,
 					message: 'Logged in successfully!',
-					id: user.id,
-					username: user.username,
-					email: user.email,
-					firstName: user.firstName,
-					lastName: user.lastName,
-					restaurant_id: user.restaurant_id,
 					token: 'Bearer ' + token,
+					user: {
+						id: user.id,
+						username: user.username,
+						email: user.email,
+						firstName: user.firstName,
+						lastName: user.lastName,
+						restaurant_id: user.restaurant_id,
+					},
 				})
 			}
 		} catch (err) {
@@ -82,8 +84,9 @@ module.exports = {
 	},
 
 	updateUser: async (req, res) => {
-		let { firstName, lastName, email, username, restaurant_id } = req.body
-		let id = req.params.id
+		const id = req.params.id
+		const { firstName, lastName, email, username, restaurant_id } = req.body
+
 		try {
 			let user = await User.findOne({
 				where: { id: id },
