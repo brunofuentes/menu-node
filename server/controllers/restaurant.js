@@ -1,4 +1,5 @@
 const Restaurant = require('../models').Restaurant
+const { deleteImageS3 } = require('../config/aws')
 
 module.exports = {
 	createRest: async (req, res) => {

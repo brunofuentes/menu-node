@@ -35,10 +35,17 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/protected', passport.authenticate('jwt', { session: false }), (req, res) => {
+	const { id, firstName, lastName, email, restaurant_id, username } = req.user
+
 	return res.status(200).send({
 		success: true,
 		user: {
-			id: req.user.id,
+			id,
+			username,
+			firstName,
+			lastName,
+			restaurant_id,
+			email,
 		},
 	})
 })
