@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 const UserContext = createContext()
 
 export function UserProvider({ children }) {
+	const navigate = useNavigate()
+
 	let userLS = {
 		token: sessionStorage.getItem('token'),
 		id: sessionStorage.getItem('id'),
@@ -17,8 +19,6 @@ export function UserProvider({ children }) {
 	const [user, setUser] = useState(userLS || null)
 	const [isLogged, setIsLogged] = useState(false)
 	const [showSidebar, setShowSidebar] = useState(true)
-
-	let navigate = useNavigate()
 
 	const SaveUserInfo = (user_data) => {
 		sessionStorage.setItem('token', user_data.token)
