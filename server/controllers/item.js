@@ -51,7 +51,7 @@ module.exports = {
 					item,
 				})
 			} else {
-				return res.status(206).json({
+				return res.status(404).json({
 					message: 'Item not found',
 				})
 			}
