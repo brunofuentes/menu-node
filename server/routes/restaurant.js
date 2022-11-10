@@ -1,8 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const { createRest, getAllRestaurants, getRestaurantById, getRestaurantbySlug, deleteRestaurant } = require('../controllers/restaurant')
+const upload = require('multer')
+const multerConfig = require('../config/multer')
 
-router.post('/restaurants', createRest)
+const {
+	createRest,
+	updateRest,
+	getAllRestaurants,
+	getRestaurantById,
+	getRestaurantbySlug,
+	deleteRestaurant,
+} = require('../controllers/restaurant')
+
+router.post('/restaurants', upload(multerConfig).single('file'), createRest)
+
+router.patch('/restaurants/:id', upload(multerConfig).single('file'), updateRest)
 
 router.get('/restaurants', getAllRestaurants)
 

@@ -3,32 +3,84 @@ const { deleteImageS3 } = require('../config/aws')
 
 module.exports = {
 	createRest: async (req, res) => {
-		let { name, description, slug, address, phone, imageUrl, websiteUrl, instagramUrl, facebookUrl } = req.body
+		const { name, description, slug, address, phone, imageUrl, websiteUrl, instagramUrl, facebookUrl } = req.body
+		const upload_url = req.file ? req.file.location : '/images/item_placeholder.png'
+
 		try {
-			let newRestaurant = await Restaurant.create({
+			let restaurant = await Restaurant.create({
 				name,
 				description,
 				slug,
 				address,
 				phone,
-				imageUrl,
+				imageUrl: upload_url,
 				websiteUrl,
 				instagramUrl,
 				facebookUrl,
 			})
 			return res.status(201).json({
 				message: 'Restaurant created successfully',
-				newRestaurant,
+				restaurant,
 			})
 		} catch (err) {
 			return res.status(500).json({ err })
 		}
 	},
 
+	updateRest: async (req, res) => {
+		const id = req.params.id
+		const { name, description, slug, address, phone, imageUrl, websiteUrl, instagramUrl, facebookUrl } = req.body
+		const upload_url = req.file ? req.file.location : imageUrl
+
+		try {
+			const restaurant = await Restaurant.findOne({
+				where: { id: id },
+			})
+			if (restaurant) {
+				if (upload_url !== imageUrl) {
+					//check here before proceeding!!
+					deleteImageS3(restaurant)
+				}
+				restaurant.update({
+					name,
+					description,
+					slug,
+					address,
+					phone,
+					imageUrl: upload_url,
+					websiteUrl,
+					instagramUrl,
+					facebookUrl,
+				})
+				return res.status(202).json({
+					message: 'Restaurant updated successfully',
+					restaurant,
+				})
+			} else {
+				return res.status(404).json({
+					message: 'Restaurant not found',
+				})
+			}
+		} catch (err) {
+			return res.status(400).json({ err })
+		}
+	},
+
 	getAllRestaurants: async (req, res) => {
 		try {
 			let restaurants = await Restaurant.findAll({
-				attributes: ['id', 'name', 'description', 'slug', 'address', 'phone', 'imageUrl', 'websiteUrl', 'instagramUrl', 'facebookUrl'],
+				attributes: [
+					'id',
+					'name',
+					'description',
+					'slug',
+					'address',
+					'phone',
+					'imageUrl',
+					'websiteUrl',
+					'instagramUrl',
+					'facebookUrl',
+				],
 				limit: 10,
 				order: [['id', 'DESC']],
 			})
