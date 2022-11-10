@@ -18,24 +18,26 @@ export function RestaurantProvider({ children }) {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 
 		useEffect(() => {
-			fetch(`/api/restaurants/ids/${restaurant_id}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-				.then((res) => {
-					if (res.ok) {
-						return res.json()
-					}
-					throw res
+			if (restaurant_id !== 'null') {
+				fetch(`/api/restaurants/ids/${restaurant_id}`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+					},
 				})
-				.then((data) => {
-					setRestaurant(data.restaurant)
-				})
-				.catch((err) => {
-					console.error('Error fetching data ', err)
-				})
+					.then((res) => {
+						if (res.ok) {
+							return res.json()
+						}
+						throw res
+					})
+					.then((data) => {
+						setRestaurant(data.restaurant)
+					})
+					.catch((err) => {
+						console.error('Error fetching data ', err)
+					})
+			}
 		}, [restaurant_id])
 	}
 
@@ -43,23 +45,23 @@ export function RestaurantProvider({ children }) {
 		const restaurant_id = sessionStorage.getItem('restaurant_id')
 
 		useEffect(() => {
-			fetch(`/api/${restaurant_id}/items`, {
-				method: 'GET',
-			})
-				.then((res) => {
-					if (res.ok) {
-						return res.json()
-					}
-					throw res
+			if (restaurant_id !== 'null') {
+				fetch(`/api/${restaurant_id}/items`, {
+					method: 'GET',
 				})
-				.then((data) => {
-					setItems(() => {
-						return data.items
+					.then((res) => {
+						if (res.ok) {
+							return res.json()
+						}
+						throw res
 					})
-				})
-				.catch((err) => {
-					console.error('Error fetching data ', err)
-				})
+					.then((data) => {
+						setItems(data.items)
+					})
+					.catch((err) => {
+						console.error('Error fetching data ', err)
+					})
+			}
 		}, [restaurant_id])
 	}
 
