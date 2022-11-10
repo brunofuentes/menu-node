@@ -10,11 +10,11 @@ import DashboardPage from './pages/dashboard/DashboardPage'
 import EditRestaurantPage from './pages/dashboard/EditRestaurantPage'
 import EditItemPage from './pages/dashboard/EditItemPage'
 import RegisterPage from './pages/auth/RegisterPage'
-import RestaurantData from './components/dashboard/RestaurantData'
-import QRCodeData from './components/dashboard/QRCodeData'
 import PageLayout from './components/PageLayout'
 import UserPage from './pages/dashboard/UserPage'
 import MenuItemsPage from './pages/dashboard/MenuItemsPage'
+import RestaurantPage from './pages/dashboard/RestaurantPage'
+import QRCodePage from './pages/dashboard/QRCodePage'
 
 function App() {
 	return (
@@ -32,12 +32,12 @@ function App() {
 							</Route>
 							<Route element={<AdminPageLayout />}>
 								<Route path="/dashboard" element={<DashboardPage />} />
-								<Route path="/dashboard/restaurant" element={<RestaurantData />} />
+								<Route path="/dashboard/restaurant" element={<RestaurantPage />} />
 								<Route path="/dashboard/edit-restaurant" element={<EditRestaurantPage />} />
 								<Route path="/dashboard/menu" element={<MenuItemsPage />} />
 								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
 								<Route path="/dashboard/add-item" element={<EditItemPage />} />
-								<Route path="/dashboard/qr-code" element={<QRCodeData />} />
+								<Route path="/dashboard/qr-code" element={<QRCodePage />} />
 								<Route path="/dashboard/account" element={<UserPage />} />
 								<Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
 							</Route>
