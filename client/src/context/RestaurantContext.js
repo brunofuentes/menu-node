@@ -1,11 +1,16 @@
 import { useEffect } from 'react'
 import { createContext, useState } from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router'
+import UserContext from './UserContext'
 
 const RestaurantContext = createContext()
 
 export function RestaurantProvider({ children }) {
-	let navigate = useNavigate()
+	const navigate = useNavigate()
+
+	const { UpdateUser, user } = useContext(UserContext)
+
 	const [restaurant, setRestaurant] = useState(null)
 	const [items, setItems] = useState([])
 	const [item, setItem] = useState(null)
@@ -105,6 +110,35 @@ export function RestaurantProvider({ children }) {
 			})
 	}
 
+	const UpdateRestaurant = (data, restId) => {
+		fetch(`/api/restaurants/${restId}`, {
+			method: 'PATCH',
+			headers: {},
+			body: data,
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				setRestaurant(data.restaurant)
+			})
+			.catch((err) => {
+				console.error('Error: ', err)
+			})
+	}
+
+	const CreateRestaurant = (data) => {
+		fetch('/api/restaurants', {
+			method: 'POST',
+			headers: {},
+			body: data,
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				setRestaurant(data.restaurant)
+				UpdateUser({ ...user, restaurant_id: data.restaurant.id })
+			})
+			.catch((err) => console.error(err))
+	}
+
 	return (
 		<RestaurantContext.Provider
 			value={{
@@ -113,6 +147,8 @@ export function RestaurantProvider({ children }) {
 				item,
 				setItem,
 				GetRestaurantData,
+				UpdateRestaurant,
+				CreateRestaurant,
 				GetMenuData,
 				GetMenuItemData,
 				CreateMenuItem,
