@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom'
 import UserContext from '../../context/UserContext'
 
 function Sidebar() {
-	const { isLogged, showSidebar } = useContext(UserContext)
+	const { isLogged, showSidebar, user } = useContext(UserContext)
 
-	if (!isLogged) {
-		return
-	}
+	if (!isLogged) return
 
 	return (
 		<div
@@ -24,7 +22,7 @@ function Sidebar() {
 			</Link>
 			<Link
 				className="transition ease-out duration-300 w-full text-left p-3 hover:bg-red-600 border-b border-red-400"
-				to="/dashboard/restaurant"
+				to={user?.restaurant_id ? '/dashboard/restaurant' : '/dashboard/add-restaurant'}
 			>
 				Restaurante
 			</Link>

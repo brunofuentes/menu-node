@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import EditRestaurantForm from '../../components/dashboard/EditRestaurantForm'
+import LoadingSpinner from '../../components/LoadingSpinner'
+import UserContext from '../../context/UserContext'
 
 function EditRestaurantPage() {
+	const { user } = useContext(UserContext)
+
+	if (!user) return <LoadingSpinner />
+	else if (!user?.restaurant_id)
+		return (
+			<div>
+				<h1>Cadastrar restaurante:</h1>
+				<EditRestaurantForm />
+			</div>
+		)
 	return (
 		<div>
 			<Link className="inline-block font-medium" to="/dashboard/restaurant">
@@ -16,7 +28,7 @@ function EditRestaurantPage() {
 					<span>Voltar</span>
 				</div>
 			</Link>
-			<EditRestaurantForm />
+			<EditRestaurantForm restId={user?.restaurant_id} />
 		</div>
 	)
 }

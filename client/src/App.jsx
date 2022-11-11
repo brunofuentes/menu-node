@@ -33,10 +33,11 @@ function App() {
 							<Route element={<AdminPageLayout />}>
 								<Route path="/dashboard" element={<DashboardPage />} />
 								<Route path="/dashboard/restaurant" element={<RestaurantPage />} />
+								<Route path="/dashboard/add-restaurant" element={<EditRestaurantPage />} />
 								<Route path="/dashboard/edit-restaurant" element={<EditRestaurantPage />} />
 								<Route path="/dashboard/menu" element={<MenuItemsPage />} />
-								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
 								<Route path="/dashboard/add-item" element={<EditItemPage />} />
+								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
 								<Route path="/dashboard/qr-code" element={<QRCodePage />} />
 								<Route path="/dashboard/account" element={<UserPage />} />
 								<Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
