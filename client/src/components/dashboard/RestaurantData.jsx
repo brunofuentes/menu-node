@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
 import LoadingSpinner from '../LoadingSpinner'
 
-function RestaurantData() {
+function RestaurantData(props) {
 	const navigate = useNavigate()
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
-	GetRestaurantData()
+	GetRestaurantData(props.restId)
 
 	function handleClickEdit() {
 		navigate('/dashboard/edit-restaurant')

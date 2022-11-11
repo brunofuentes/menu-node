@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react'
 import QRCode from 'qrcode'
 import RestaurantContext from '../../context/RestaurantContext'
-import LoadingSpinner from '../LoadingSpinner'
 
-function QRCodeData() {
+function QRCodeData(props) {
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
+
+	GetRestaurantData(props.restId)
 
 	const url = `https://menu-node.vercel.app/${restaurant?.slug}/menu`
 	const [qrcode, setQrcode] = useState(null)
-
-	GetRestaurantData()
 
 	const GenerateQRCode = () => {
 		QRCode.toDataURL(

@@ -4,11 +4,11 @@ import RestaurantContext from '../../context/RestaurantContext'
 import LoadingSpinner from '../LoadingSpinner'
 import './ItemsTable.css'
 
-function MenuData() {
+function MenuData(props) {
 	let navigate = useNavigate()
 	const { items, setItem, GetMenuData, DeleteMenuItem, GetMenuItemData } = useContext(RestaurantContext)
 
-	GetMenuData()
+	GetMenuData(props.restId)
 
 	function handleAddNewItem() {
 		setItem(null)
