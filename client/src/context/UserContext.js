@@ -8,9 +8,11 @@ export function UserProvider({ children }) {
 
 	const [user, setUser] = useState(null)
 	const [isLogged, setIsLogged] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 	const [showSidebar, setShowSidebar] = useState(true)
 
 	const LoginUser = (data) => {
+		setIsLoading(true)
 		fetch(`/api/sign-in`, {
 			method: 'POST',
 			headers: {
@@ -31,12 +33,14 @@ export function UserProvider({ children }) {
 				if (data.success) {
 					sessionStorage.setItem('token', data.token)
 					setUser(data.user)
+					setIsLoading(false)
 					navigate('/dashboard')
 				}
 				return { message: data.message }
 			})
 			.catch((err) => {
 				console.log(err)
+				setIsLoading(false)
 				navigate('/login')
 			})
 	}
@@ -105,6 +109,7 @@ export function UserProvider({ children }) {
 		<UserContext.Provider
 			value={{
 				isLogged,
+				isLoading,
 				user,
 				setUser,
 				logoutUser,
