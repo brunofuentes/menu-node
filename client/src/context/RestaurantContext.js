@@ -14,12 +14,10 @@ export function RestaurantProvider({ children }) {
 	const [items, setItems] = useState([])
 	const [item, setItem] = useState(null)
 
-	const GetRestaurantData = () => {
-		const restaurant_id = sessionStorage.getItem('restaurant_id')
-
+	const GetRestaurantData = (restId) => {
 		useEffect(() => {
-			if (restaurant_id !== 'null') {
-				fetch(`/api/restaurants/ids/${restaurant_id}`, {
+			if (restId) {
+				fetch(`/api/restaurants/ids/${restId}`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',
@@ -38,15 +36,13 @@ export function RestaurantProvider({ children }) {
 						console.error('Error fetching data ', err)
 					})
 			}
-		}, [restaurant_id])
+		}, [restId])
 	}
 
-	const GetMenuData = () => {
-		const restaurant_id = sessionStorage.getItem('restaurant_id')
-
+	const GetMenuData = (restId) => {
 		useEffect(() => {
-			if (restaurant_id !== 'null') {
-				fetch(`/api/${restaurant_id}/items`, {
+			if (restId) {
+				fetch(`/api/${restId}/items`, {
 					method: 'GET',
 				})
 					.then((res) => {
@@ -62,7 +58,7 @@ export function RestaurantProvider({ children }) {
 						console.error('Error fetching data ', err)
 					})
 			}
-		}, [restaurant_id])
+		}, [restId])
 	}
 
 	const GetMenuItemData = (id) => {
@@ -77,8 +73,9 @@ export function RestaurantProvider({ children }) {
 			headers: {},
 			body: data,
 		})
-			.then((res) => {
-				console.log(res)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data)
 				navigate('/dashboard/menu')
 			})
 			.catch((err) => console.error(err))
@@ -90,8 +87,9 @@ export function RestaurantProvider({ children }) {
 			headers: {},
 			body: data,
 		})
-			.then((res) => {
-				console.log(res)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data)
 				navigate('/dashboard/menu')
 			})
 			.catch((err) => console.log(err))
