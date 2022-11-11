@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import RestaurantContext from '../../context/RestaurantContext'
 
 function MenuItemForm() {
+	const navigate = useNavigate()
+
 	const { item, CreateMenuItem, UpdateMenuItem } = useContext(RestaurantContext)
 
 	const {
@@ -24,9 +27,11 @@ function MenuItemForm() {
 
 		if (item) {
 			UpdateMenuItem(formData, item.id)
+			navigate('/dashboard/menu')
 		}
 		if (!item) {
 			CreateMenuItem(formData)
+			navigate('/dashboard/menu')
 		}
 	}
 
