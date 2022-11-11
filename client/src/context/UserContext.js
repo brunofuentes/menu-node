@@ -6,29 +6,9 @@ const UserContext = createContext()
 export function UserProvider({ children }) {
 	const navigate = useNavigate()
 
-	let userLS = {
-		token: sessionStorage.getItem('token'),
-		id: sessionStorage.getItem('id'),
-		email: sessionStorage.getItem('email'),
-		username: sessionStorage.getItem('username'),
-		firstName: sessionStorage.getItem('firstName'),
-		lastName: sessionStorage.getItem('lastName'),
-		restaurant_id: sessionStorage.getItem('restaurant_id'),
-	}
-
 	const [user, setUser] = useState(null)
 	const [isLogged, setIsLogged] = useState(false)
 	const [showSidebar, setShowSidebar] = useState(true)
-
-	const SaveUserInfo = (user_data) => {
-		sessionStorage.setItem('token', user_data.token)
-		sessionStorage.setItem('id', user_data.user.id)
-		sessionStorage.setItem('email', user_data.user.email)
-		sessionStorage.setItem('username', user_data.user.username)
-		sessionStorage.setItem('firstName', user_data.user.firstName)
-		sessionStorage.setItem('lastName', user_data.user.lastName)
-		sessionStorage.setItem('restaurant_id', user_data.user.restaurant_id)
-	}
 
 	const LoginUser = (data) => {
 		fetch(`/api/sign-in`, {
@@ -49,7 +29,7 @@ export function UserProvider({ children }) {
 			})
 			.then((data) => {
 				if (data.success) {
-					SaveUserInfo(data)
+					sessionStorage.setItem('token', data.token)
 					setUser(data.user)
 					navigate('/dashboard')
 				}
@@ -114,7 +94,8 @@ export function UserProvider({ children }) {
 			})
 			.then((data) => {
 				if (data.success) {
-					SaveUserInfo(data)
+					sessionStorage.setItem('token', data.token)
+					setUser(data.user)
 				}
 				return { message: data.message }
 			})
@@ -129,7 +110,6 @@ export function UserProvider({ children }) {
 				isLogged,
 				user,
 				setUser,
-				SaveUserInfo,
 				logoutUser,
 				showSidebar,
 				setShowSidebar,
