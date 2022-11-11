@@ -8,7 +8,7 @@ const RestaurantContext = createContext()
 export function RestaurantProvider({ children }) {
 	const navigate = useNavigate()
 
-	const { UpdateUser, user } = useContext(UserContext)
+	const { UpdateUser, user, setUser } = useContext(UserContext)
 
 	const [restaurant, setRestaurant] = useState(null)
 	const [items, setItems] = useState([])
@@ -133,6 +133,7 @@ export function RestaurantProvider({ children }) {
 			.then((res) => res.json())
 			.then((data) => {
 				setRestaurant(data.restaurant)
+				setUser({ ...user, restaurant_id: data.restaurant.id })
 				UpdateUser({ ...user, restaurant_id: data.restaurant.id })
 			})
 			.catch((err) => console.error(err))

@@ -93,10 +93,7 @@ export function UserProvider({ children }) {
 				throw res
 			})
 			.then((data) => {
-				if (data.success) {
-					sessionStorage.setItem('token', data.token)
-					setUser(data.user)
-				}
+				setUser(data.user)
 				return { message: data.message }
 			})
 			.catch((err) => {
