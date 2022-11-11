@@ -18,7 +18,7 @@ function UserData() {
 	}
 
 	return (
-		<div className="mx-3 border max-w-sm rounded relative shadow-md">
+		<div className="border max-w-sm rounded relative shadow-md">
 			<div className="flex justify-between p-2">
 				<span className="text-lg font-semibold p-2">Informações da Conta</span>
 				<span className="flex">

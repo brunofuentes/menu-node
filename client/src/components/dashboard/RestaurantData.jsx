@@ -18,7 +18,7 @@ function RestaurantData(props) {
 	}
 
 	return (
-		<div className="mx-3 border max-w-sm rounded relative shadow-md">
+		<div className="border max-w-sm rounded relative shadow-md">
 			{restaurant ? (
 				<div>
 					<div className="flex justify-between p-2">

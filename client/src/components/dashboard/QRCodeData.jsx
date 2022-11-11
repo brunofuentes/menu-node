@@ -25,7 +25,7 @@ function QRCodeData(props) {
 	}
 
 	return (
-		<div className="text-center mx-3 max-w-sm border rounded shadow-md">
+		<div className="text-center max-w-sm border rounded shadow-md">
 			<div className="p-2">
 				<p className="text-lg font-semibold p-2">Gerador de código QR-Code</p>
 

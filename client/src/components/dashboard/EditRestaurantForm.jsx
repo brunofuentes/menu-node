@@ -38,7 +38,7 @@ function RestaurantForm(props) {
 	}
 
 	return (
-		<section className="text-sm w-9/12 mx-auto">
+		<section className="text-sm mx-auto">
 			<p className="text-xl font-bold text-center p-2">Detalhes do Restaurante</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
 				<form onSubmit={handleSubmit(onSubmit)} action="" className="space-y-6" encType="multipart/form-data">
