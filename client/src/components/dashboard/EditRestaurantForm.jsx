@@ -6,14 +6,12 @@ import UserContext from '../../context/UserContext'
 import LoadingSpinner from '../LoadingSpinner'
 
 function RestaurantForm() {
-	let navigate = useNavigate()
+	const navigate = useNavigate()
 
 	const { restaurant, GetRestaurantData, UpdateRestaurant, CreateRestaurant } = useContext(RestaurantContext)
 	const { UpdateUser, user } = useContext(UserContext)
 
-	const restaurant_id = sessionStorage.getItem('restaurant_id')
-
-	GetRestaurantData()
+	GetRestaurantData(user.restaurant_id)
 
 	const {
 		register,
