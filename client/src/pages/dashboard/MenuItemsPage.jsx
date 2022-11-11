@@ -14,7 +14,7 @@ function MenuItemsPage() {
 			<div>
 				Parece que você ainda não tem um restaurante cadastrado. Cadastre{' '}
 				<span className="hover:underline hover:text-blue-600 font-bold">
-					<Link to="/dashboard/restaurant">aqui</Link>
+					<Link to="/dashboard/add-restaurant">aqui</Link>
 				</span>
 			</div>
 		)
