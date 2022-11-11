@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
 import UserContext from '../../context/UserContext'
-import LoadingSpinner from '../LoadingSpinner'
 
 function RestaurantForm() {
 	const navigate = useNavigate()
@@ -39,10 +38,6 @@ function RestaurantForm() {
 			UpdateUser(user)
 		}
 		navigate('/dashboard/restaurant')
-	}
-
-	if (!restaurant && restaurant_id !== 'null') {
-		return <LoadingSpinner />
 	}
 
 	return (

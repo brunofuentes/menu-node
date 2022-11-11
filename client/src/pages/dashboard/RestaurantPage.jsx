@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import RestaurantData from '../../components/dashboard/RestaurantData'
 import EditRestaurantForm from '../../components/dashboard/EditRestaurantForm'
+import UserContext from '../../context/UserContext'
+import LoadingSpinner from '../../components/LoadingSpinner'
 
 function RestaurantPage() {
-	const restaurant_id = sessionStorage.getItem('restaurant_id')
+	const { user } = useContext(UserContext)
 
-	if (restaurant_id === 'null' || restaurant_id === 'undefined') {
+	if (!user) return <LoadingSpinner />
+	else if (!user?.restaurant_id)
 		return (
 			<div>
-				<h1>Cadastrar restaurante</h1>
+				<h1>Cadastrar restaurante:</h1>
 				<EditRestaurantForm />
 			</div>
 		)
-	}
-
 	return (
 		<div>
-			<RestaurantData />
+			<RestaurantData restId={user?.restaurant_id} />
 		</div>
 	)
 }

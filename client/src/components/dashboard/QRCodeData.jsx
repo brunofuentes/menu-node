@@ -24,10 +24,6 @@ function QRCodeData(props) {
 		)
 	}
 
-	if (!restaurant) {
-		return <LoadingSpinner />
-	}
-
 	return (
 		<div className="text-center mx-3 max-w-sm border rounded shadow-md">
 			<div className="p-2">

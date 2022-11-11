@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
-import LoadingSpinner from '../LoadingSpinner'
 import './ItemsTable.css'
 
 function MenuData(props) {
@@ -22,10 +21,6 @@ function MenuData(props) {
 	function handleEdit(id) {
 		GetMenuItemData(id)
 		navigate(`/dashboard/edit-item/${id}`)
-	}
-
-	if (items.length < 1) {
-		return <LoadingSpinner />
 	}
 
 	return (

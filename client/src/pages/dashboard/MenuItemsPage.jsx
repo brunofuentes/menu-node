@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ItemsTable from '../../components/dashboard/ItemsTable'
 import { Link } from 'react-router-dom'
+import UserContext from '../../context/UserContext'
+import LoadingSpinner from '../../components/LoadingSpinner'
 
 function MenuItemsPage() {
-	const restaurant_id = sessionStorage.getItem('restaurant_id')
+	const { user } = useContext(UserContext)
 
-	if (restaurant_id === 'null' || restaurant_id === 'undefined') {
+	if (!user) {
+		return <LoadingSpinner />
+	} else if (!user?.restaurant_id) {
 		return (
 			<div>
 				Parece que você ainda não tem um restaurante cadastrado. Cadastre{' '}
@@ -14,13 +18,13 @@ function MenuItemsPage() {
 				</span>
 			</div>
 		)
+	} else {
+		return (
+			<div>
+				<ItemsTable restId={user?.restaurant_id} />
+			</div>
+		)
 	}
-
-	return (
-		<div>
-			<ItemsTable />
-		</div>
-	)
 }
 
 export default MenuItemsPage
