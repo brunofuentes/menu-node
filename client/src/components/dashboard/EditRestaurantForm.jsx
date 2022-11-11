@@ -2,15 +2,13 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import RestaurantContext from '../../context/RestaurantContext'
-import UserContext from '../../context/UserContext'
 
-function RestaurantForm() {
+function RestaurantForm(props) {
 	const navigate = useNavigate()
 
 	const { restaurant, GetRestaurantData, UpdateRestaurant, CreateRestaurant } = useContext(RestaurantContext)
-	const { UpdateUser, user } = useContext(UserContext)
 
-	GetRestaurantData(user.restaurant_id)
+	GetRestaurantData(props.restId)
 
 	const {
 		register,
@@ -35,7 +33,6 @@ function RestaurantForm() {
 			UpdateRestaurant(formData, restaurant.id)
 		} else {
 			CreateRestaurant(formData)
-			UpdateUser(user)
 		}
 		navigate('/dashboard/restaurant')
 	}
