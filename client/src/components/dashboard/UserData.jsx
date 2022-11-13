@@ -7,7 +7,7 @@ function UserData() {
 	const { user } = useContext(UserContext)
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
-	GetRestaurantData()
+	GetRestaurantData(user?.restaurant_id)
 
 	const handleClickEdit = () => {
 		console.log('function not yet implemented')
