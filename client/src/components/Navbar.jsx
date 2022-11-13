@@ -25,22 +25,19 @@ function Navbar() {
 				</div>
 			)}
 			<div className="mx-2 sm:mx-5">
-				<Link to="/">Menu App</Link>
+				<Link to={isLogged ? '/dashboard' : '/'}>Menu App</Link>
 			</div>
 			<div className="flex mx-2 sm:mx-5">
 				{isLogged ? (
-					<div>
-						<Link to="/dashboard/menu">Dashboard</Link>
-						<button
-							onClick={() => {
-								logoutUser()
-								navigate('/')
-							}}
-							className="px-3"
-						>
-							Logout
-						</button>
-					</div>
+					<button
+						onClick={() => {
+							logoutUser()
+							navigate('/')
+						}}
+						className="px-3"
+					>
+						Logout
+					</button>
 				) : (
 					<button onClick={() => navigate('/login')} className="px-1">
 						Login
