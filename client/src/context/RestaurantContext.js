@@ -82,7 +82,7 @@ export function RestaurantProvider({ children }) {
 	}
 
 	const UpdateMenuItem = (data, item_id) => {
-		fetch(`/api/items/${item_id}`, {
+		fetch(`/api/items/${user.username}/${item_id}`, {
 			method: 'PATCH',
 			headers: {},
 			body: data,

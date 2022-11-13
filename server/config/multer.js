@@ -29,8 +29,9 @@ const storageTypes = {
 				if (err) cb(err)
 
 				const fileName = `${hash.toString('hex')}-${file.originalname}`
+				const fullPath = `${req.params.username}/${fileName}`
 
-				cb(null, fileName)
+				cb(null, fullPath)
 			})
 		},
 	}),

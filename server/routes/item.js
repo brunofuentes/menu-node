@@ -7,7 +7,7 @@ const { createItem, updateItem, getAllItems, getItemsRestaurant, deleteItem, get
 
 router.post('/items', upload(multerConfig).single('file'), createItem)
 
-router.patch('/items/:id', upload(multerConfig).single('file'), updateItem)
+router.patch('/items/:username/:id', upload(multerConfig).single('file'), updateItem)
 
 router.get('/items', getAllItems)
 
