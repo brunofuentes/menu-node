@@ -68,12 +68,14 @@ export function RestaurantProvider({ children }) {
 	}
 
 	const CreateMenuItem = (data) => {
-		fetch('/api/items', {
+		fetch(`/api/items/${user.username}`, {
 			method: 'POST',
 			headers: {},
 			body: data,
 		})
-			.then((res) => res.json())
+			.then((res) => {
+				return res.json()
+			})
 			.then((data) => {
 				console.log(data)
 				navigate('/dashboard/menu')
