@@ -1,16 +1,19 @@
 import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import RestaurantContext from '../../context/RestaurantContext'
 import UserContext from '../../context/UserContext'
 import LoadingSpinner from '../LoadingSpinner'
 
 function UserData() {
+	const navigate = useNavigate()
+
 	const { user } = useContext(UserContext)
 	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
 	GetRestaurantData(user?.restaurant_id)
 
 	const handleClickEdit = () => {
-		console.log('function not yet implemented')
+		navigate('/dashboard/edit-account')
 	}
 
 	if (!user && !restaurant) {

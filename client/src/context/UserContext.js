@@ -98,11 +98,31 @@ export function UserProvider({ children }) {
 			})
 			.then((data) => {
 				setUser(data.user)
-				return { message: data.message }
+				console.log(data.message)
 			})
 			.catch((err) => {
 				console.log(err)
 			})
+	}
+
+	const UpdateUserPassword = (data) => {
+		fetch(`/api/users/password/${data.id}`, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				password: data.password,
+				newPassword: data.newPassword,
+			}),
+		})
+			.then((res) => {
+				return res.json()
+			})
+			.then((data) => {
+				alert(data.message)
+			})
+			.catch((err) => console.log(err))
 	}
 
 	return (
@@ -118,6 +138,7 @@ export function UserProvider({ children }) {
 				AuthenticateUser,
 				LoginUser,
 				UpdateUser,
+				UpdateUserPassword,
 			}}
 		>
 			{children}

@@ -1,0 +1,7 @@
+.hide {
+	@apply hidden;
+}
+
+.hoverEffect:hover + .hide {
+	@apply block;
+}
