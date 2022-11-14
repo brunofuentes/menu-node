@@ -15,6 +15,7 @@ import UserPage from './pages/dashboard/UserPage'
 import MenuItemsPage from './pages/dashboard/MenuItemsPage'
 import RestaurantPage from './pages/dashboard/RestaurantPage'
 import QRCodePage from './pages/dashboard/QRCodePage'
+import EditUserPage from './pages/dashboard/EditUserPage'
 
 function App() {
 	return (
@@ -40,6 +41,7 @@ function App() {
 								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
 								<Route path="/dashboard/qr-code" element={<QRCodePage />} />
 								<Route path="/dashboard/account" element={<UserPage />} />
+								<Route path="/dashboard/edit-account" element={<EditUserPage />} />
 								<Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
 							</Route>
 						</Routes>
