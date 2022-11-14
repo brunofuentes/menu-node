@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import RestaurantContext from '../../context/RestaurantContext'
 
-function MenuItemForm() {
+function EditItemForm(props) {
 	const navigate = useNavigate()
 
 	const { item, CreateMenuItem, UpdateMenuItem } = useContext(RestaurantContext)
@@ -22,7 +22,7 @@ function MenuItemForm() {
 		formData.append('description', data.description)
 		formData.append('price', data.price)
 		formData.append('categories', data.categories)
-		formData.append('restaurant_id', sessionStorage.getItem('restaurant_id'))
+		formData.append('restaurant_id', props.restId)
 		formData.append('file', data.file[0])
 
 		if (item) {
@@ -150,4 +150,4 @@ function MenuItemForm() {
 	)
 }
 
-export default MenuItemForm
+export default EditItemForm
