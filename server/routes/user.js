@@ -19,11 +19,11 @@ router.patch('/users/:id', updateUser)
 
 router.patch('/users/password/:id', updateUserPassword)
 
-router.get('/sign-up/', getAllUsers)
+router.get('/users/', getAllUsers)
 
-router.get('/sign-up/:id', getSingleUser)
+router.get('/users/:id', getSingleUser)
 
-router.delete('/sign-up/:id', deleteSingleUser)
+router.delete('/users/:id', deleteSingleUser)
 
 router.delete('/sign-up/', deleteAllUsers)
 
