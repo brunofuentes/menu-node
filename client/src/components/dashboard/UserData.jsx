@@ -42,6 +42,10 @@ function UserData() {
 						{user.username}
 					</li>
 					<li>
+						<span className="font-semibold">Email: </span>
+						{user.email}
+					</li>
+					<li>
 						<span className="font-semibold">Restaurante: </span>
 						<span>{restaurant?.name}</span>
 					</li>
