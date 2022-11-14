@@ -5,7 +5,7 @@ const multerConfig = require('../config/multer')
 
 const { createItem, updateItem, getAllItems, getItemsRestaurant, deleteItem, getItem } = require('../controllers/item')
 
-router.post('/items', upload(multerConfig).single('file'), createItem)
+router.post('/items/:username', upload(multerConfig).single('file'), createItem)
 
 router.patch('/items/:username/:id', upload(multerConfig).single('file'), updateItem)
 
