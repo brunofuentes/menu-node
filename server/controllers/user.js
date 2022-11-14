@@ -101,12 +101,64 @@ module.exports = {
 				})
 				return res.status(202).json({
 					message: 'User updated successfully',
-					user,
+					user: {
+						id: user.id,
+						firstName: user.firstName,
+						lastName: user.lastName,
+						email: user.lastEmail,
+						username: user.username,
+						restaurant_id: user.restaurant_id,
+					},
 				})
 			} else {
 				return res.status(206).json({
 					message: 'User not found',
 				})
+			}
+		} catch (err) {
+			return res.status(400).json({
+				error: err,
+			})
+		}
+	},
+
+	updateUserPassword: async (req, res) => {
+		const id = req.params.id
+		const { password, newPassword } = req.body
+		try {
+			let user = await User.findOne({
+				where: { id: id },
+			})
+			if (user) {
+				const match = await bcrypt.compare(password, user.password)
+				if (!match) {
+					return res.status(403).send({
+						success: false,
+						message: 'Incorrect password.',
+					})
+				} else if (newPassword === password) {
+					return res.status(406).json({
+						success: false,
+						message: 'New Password must be different than current.',
+					})
+				} else {
+					const hashedNewPassword = await bcrypt.hash(newPassword, 10)
+					user.update({
+						...user,
+						password: hashedNewPassword,
+					})
+					return res.status(202).json({
+						message: 'User password updated successfully',
+						user: {
+							id: user.id,
+							firstName: user.firstName,
+							lastName: user.lastName,
+							email: user.lastEmail,
+							username: user.username,
+							restaurant_id: user.restaurant_id,
+						},
+					})
+				}
 			}
 		} catch (err) {
 			return res.status(400).json({

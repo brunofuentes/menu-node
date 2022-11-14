@@ -4,6 +4,7 @@ const {
 	signUp,
 	signIn,
 	updateUser,
+	updateUserPassword,
 	getAllUsers,
 	getSingleUser,
 	deleteSingleUser,
@@ -15,6 +16,8 @@ router.post('/sign-up', signUp)
 router.post('/sign-in', signIn)
 
 router.patch('/users/:id', updateUser)
+
+router.patch('/users/password/:id', updateUserPassword)
 
 router.get('/sign-up/', getAllUsers)
 
