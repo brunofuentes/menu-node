@@ -203,7 +203,10 @@ module.exports = {
 			if (user) {
 				return res.status(200).json({
 					message: 'User Deleted successfully',
-					user,
+				})
+			} else {
+				return res.status(404).json({
+					message: 'User not found',
 				})
 			}
 		} catch (err) {
