@@ -128,7 +128,6 @@ module.exports = {
 			if (restaurant) {
 				return res.status(200).json({
 					message: 'Restaurant Deleted successfully',
-					restaurant,
 				})
 			}
 		} catch (err) {
