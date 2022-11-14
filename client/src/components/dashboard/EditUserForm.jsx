@@ -6,7 +6,7 @@ import './EditUserForm.css'
 
 function EditUserForm({ user }) {
 	const navigate = useNavigate()
-	const { UpdateUser, UpdateUserPassword } = useContext(UserContext)
+	const { UpdateUser, UpdateUserPassword, DeleteUser } = useContext(UserContext)
 
 	const {
 		register: regPersonalData,
@@ -32,6 +32,14 @@ function EditUserForm({ user }) {
 			alert("passwords doesn't match")
 		} else {
 			UpdateUserPassword(userData)
+		}
+	}
+
+	const handleDeleteAccount = () => {
+		const confirmation = window.confirm('Você está certo disso? Esta ação não pode ser desfeita.')
+		if (confirmation) {
+			DeleteUser(user.id)
+			navigate('/')
 		}
 	}
 
@@ -146,6 +154,15 @@ function EditUserForm({ user }) {
 					</button>
 				</div>
 			</form>
+			<div className="my-6">
+				<button
+					type="button"
+					onClick={handleDeleteAccount}
+					className="w-full py-2 px-4 bg-red-600 hover:bg-red-500 rounded-md text-white"
+				>
+					Deletar Conta
+				</button>
+			</div>
 		</div>
 	)
 }

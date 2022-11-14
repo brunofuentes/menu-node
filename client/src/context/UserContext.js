@@ -24,10 +24,7 @@ export function UserProvider({ children }) {
 			}),
 		})
 			.then((res) => {
-				if (res.ok) {
-					return res.json()
-				}
-				throw res
+				return res.json()
 			})
 			.then((data) => {
 				if (data.success) {
@@ -125,6 +122,23 @@ export function UserProvider({ children }) {
 			.catch((err) => console.log(err))
 	}
 
+	const DeleteUser = (id) => {
+		fetch(`/api/users/${id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => {
+				return res.json()
+			})
+			.then((data) => {
+				alert(data.message)
+				sessionStorage.clear()
+			})
+			.catch((err) => console.log(err))
+	}
+
 	return (
 		<UserContext.Provider
 			value={{
@@ -133,6 +147,7 @@ export function UserProvider({ children }) {
 				user,
 				setUser,
 				logoutUser,
+				DeleteUser,
 				showSidebar,
 				setShowSidebar,
 				AuthenticateUser,
