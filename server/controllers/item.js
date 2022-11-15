@@ -7,7 +7,7 @@ module.exports = {
 		const upload_url = req.file ? req.file.location : '/images/item_placeholder.png'
 
 		try {
-			let newItem = await Item.create({
+			let item = await Item.create({
 				name,
 				description,
 				price,
@@ -18,7 +18,7 @@ module.exports = {
 			})
 			return res.status(201).json({
 				message: 'Item created successfully',
-				newItem: newItem,
+				item,
 			})
 		} catch (err) {
 			return res.status(500).json({ Error: err })
