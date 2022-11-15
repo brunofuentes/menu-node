@@ -2,6 +2,7 @@
 	"name": "client",
 	"version": "0.1.0",
 	"private": true,
+	"license": "MIT",
 	"dependencies": {
 		"@testing-library/react": "^13.3.0",
 		"@testing-library/user-event": "^13.5.0",
@@ -20,7 +21,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"proxy": "https://menu-online-node.herokuapp.com",
+	"proxy": "http://localhost:3001",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
