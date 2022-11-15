@@ -27,12 +27,11 @@ function EditItemForm(props) {
 
 		if (item) {
 			UpdateMenuItem(formData, item.id)
-			navigate('/dashboard/menu')
 		}
 		if (!item) {
 			CreateMenuItem(formData)
-			navigate('/dashboard/menu')
 		}
+		navigate('/dashboard/menu')
 	}
 
 	return (
