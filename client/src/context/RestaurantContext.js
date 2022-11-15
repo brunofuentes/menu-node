@@ -1,13 +1,9 @@
-import { useContext } from 'react'
-import { useEffect, createContext, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useEffect, createContext, useState, useContext } from 'react'
 import UserContext from './UserContext'
 
 const RestaurantContext = createContext()
 
 export function RestaurantProvider({ children }) {
-	const navigate = useNavigate()
-
 	const { UpdateUser, user, setUser } = useContext(UserContext)
 
 	const [restaurant, setRestaurant] = useState(null)
@@ -46,10 +42,7 @@ export function RestaurantProvider({ children }) {
 					method: 'GET',
 				})
 					.then((res) => {
-						if (res.ok) {
-							return res.json()
-						}
-						throw res
+						return res.json()
 					})
 					.then((data) => {
 						setItems(data.items)
@@ -77,8 +70,7 @@ export function RestaurantProvider({ children }) {
 				return res.json()
 			})
 			.then((data) => {
-				console.log(data)
-				navigate('/dashboard/menu')
+				setItems([...items, data.item])
 			})
 			.catch((err) => console.error(err))
 	}
@@ -91,8 +83,7 @@ export function RestaurantProvider({ children }) {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data)
-				navigate('/dashboard/menu')
+				setItems(items.map((item) => (item.id === data.item.id ? data.item : item)))
 			})
 			.catch((err) => console.log(err))
 	}
@@ -103,8 +94,7 @@ export function RestaurantProvider({ children }) {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('Success:', data)
-				navigate('/dashboard/menu')
+				setItems(items.filter((x) => x.id !== id))
 			})
 			.catch((err) => {
 				console.error('Error:', err)
