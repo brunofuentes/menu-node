@@ -7,7 +7,7 @@ function DashboardPage() {
 
 	return (
 		<>
-			<h1 className="text-3xl font-medium">Hello, {user?.firstName || user?.username}</h1>
+			<h1 className="text-3xl font-medium">Olá, {user?.firstName || user?.username}</h1>
 		</>
 	)
 }
