@@ -5,9 +5,7 @@ import './ItemsTable.css'
 
 function MenuData(props) {
 	let navigate = useNavigate()
-	const { items, setItem, GetMenuData, DeleteMenuItem, GetMenuItemData } = useContext(RestaurantContext)
-
-	GetMenuData(props.restId)
+	const { items, setItem, DeleteMenuItem, GetMenuItemData } = useContext(RestaurantContext)
 
 	function handleAddNewItem() {
 		setItem(null)
