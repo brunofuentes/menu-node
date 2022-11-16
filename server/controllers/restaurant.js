@@ -106,7 +106,6 @@ module.exports = {
 
 	getRestaurantbySlug: async (req, res) => {
 		let slug = req.params.slug
-		console.log(slug)
 		try {
 			let restaurant = await Restaurant.findOne({
 				where: { slug: slug },
