@@ -27,18 +27,20 @@ module.exports = {
 
 	updateItem: async (req, res) => {
 		const id = req.params.id
-		const { name, description, price, section, imageUrl, categories } = req.body
-		const upload_url = req.file ? req.file.location : imageUrl
+		const { name, description, price, section, categories } = req.body
 
 		try {
 			const item = await Item.findOne({
 				where: { id: id },
 			})
+
+			const upload_url = req.file ? String(req.file.location) : item.imageUrl
+
 			if (item) {
-				if (upload_url !== imageUrl) {
-					deleteImageS3(item)
+				if (upload_url !== item.imageUrl) {
+					await deleteImageS3(item.imageUrl)
 				}
-				item.update({
+				await item.update({
 					name,
 					description,
 					price,

@@ -2,7 +2,7 @@ const aws = require('aws-sdk')
 const s3 = new aws.S3()
 
 module.exports = {
-	deleteImageS3: (item) => {
+	deleteImageS3: async (item) => {
 		if (process.env.STORAGE_TYPE === 's3' && item.imageUrl.includes('amazonaws')) {
 			s3.deleteObject({
 				Bucket: process.env.BUCKET_NAME,
