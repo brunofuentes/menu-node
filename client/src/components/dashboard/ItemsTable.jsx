@@ -49,10 +49,17 @@ function MenuData(props) {
 						</tr>
 					</thead>
 					<tbody>
-						{items.map((item, index) => (
-							<tr key={index}>
+						{items.map((item) => (
+							<tr key={item.id}>
 								<td>
-									<img height="36" width="60" className="flex flex-none" src={item.imageUrl} alt="" />
+									<img
+										key={item.imageUrl}
+										height="36"
+										width="60"
+										className="flex flex-none"
+										src={item.imageUrl}
+										alt=""
+									/>
 								</td>
 								<td>{item.section}</td>
 								<td>{item.name}</td>

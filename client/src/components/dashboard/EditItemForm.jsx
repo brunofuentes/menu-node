@@ -30,15 +30,10 @@ function EditItemForm(props) {
 
 	return (
 		<section className="text-sm w-1/2 mx-auto">
-			<p className="text-xl font-bold text-center p-2">Detalhes do Item</p>
+			<p className="sm:text-xl text-lg font-bold text-center p-2">Detalhes do Item</p>
 			<div className="max-w-md w-full mx-auto bg-white p-2">
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					key={item?.id}
-					className="space-y-6"
-					encType="multipart/form-data"
-				>
-					<div className="flex gap-2">
+				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6" encType="multipart/form-data">
+					<div className="flex sm:flex-row flex-col gap-2">
 						<div>
 							<p className="text-sm font-bold text-gray-600 block">Foto atual:</p>
 							<img className="rounded" height="250px" width="250px" src={item?.imageUrl} alt="" />
@@ -85,6 +80,7 @@ function EditItemForm(props) {
 						<input
 							{...register('name', {
 								required: true,
+								maxLength: 38,
 							})}
 							style={{ borderColor: errors.name ? 'red' : '' }}
 							defaultValue={item?.name}
@@ -97,15 +93,16 @@ function EditItemForm(props) {
 						<label htmlFor="" className="text-sm font-bold text-gray-600 block">
 							Descrição do Item
 						</label>
-						<input
+						<textarea
 							{...register('description', {
 								required: true,
+								maxLength: 140,
 							})}
 							style={{ borderColor: errors.description ? 'red' : '' }}
 							defaultValue={item?.description}
 							type="text"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
-						></input>
+						></textarea>
 						{errors.description && <span className="text-sm">Descrição do Item é obrigatória.</span>}
 					</div>
 					<div>
