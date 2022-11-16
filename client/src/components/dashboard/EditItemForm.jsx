@@ -68,8 +68,14 @@ function EditItemForm(props) {
 							style={{ borderColor: errors.section ? 'red' : '' }}
 							defaultValue={item?.section}
 							type="text"
+							list="existing-sections"
 							className="border-gray-300 rounded w-full p-2 border mt-1"
 						></input>
+						<datalist id="existing-sections">
+							{sections?.map((section) => (
+								<option key={section} value={section}></option>
+							))}
+						</datalist>
 						{errors.section && <span className="text-sm">Secção do item é obrigatoria.</span>}
 					</div>
 					<div>
