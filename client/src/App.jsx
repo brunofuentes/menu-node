@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { UserProvider } from './context/UserContext'
-import { RestaurantProvider } from './context/RestaurantContext'
-import { MenuProvider } from './context/MenuContext'
 import Home from './pages/home/Home'
 import MenuPage from './pages/menu/MenuPage'
 import LoginPage from './pages/auth/LoginPage'
@@ -21,32 +19,28 @@ function App() {
 	return (
 		<Router>
 			<UserProvider>
-				<RestaurantProvider>
-					<MenuProvider>
-						<Routes>
-							<Route path="/:slug/menu" element={<MenuPage />} />
-							<Route element={<PageLayout />}>
-								<Route path="/" element={<Home />} />
-								<Route path="/login" element={<LoginPage />} />
-								<Route path="/register" element={<RegisterPage />} />
-								<Route path="*" element={<Navigate to="/" replace />} />
-							</Route>
-							<Route element={<AdminPageLayout />}>
-								<Route path="/dashboard" element={<DashboardPage />} />
-								<Route path="/dashboard/restaurant" element={<RestaurantPage />} />
-								<Route path="/dashboard/add-restaurant" element={<EditRestaurantPage />} />
-								<Route path="/dashboard/edit-restaurant" element={<EditRestaurantPage />} />
-								<Route path="/dashboard/menu" element={<MenuItemsPage />} />
-								<Route path="/dashboard/add-item" element={<EditItemPage />} />
-								<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
-								<Route path="/dashboard/qr-code" element={<QRCodePage />} />
-								<Route path="/dashboard/account" element={<UserPage />} />
-								<Route path="/dashboard/edit-account" element={<EditUserPage />} />
-								<Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
-							</Route>
-						</Routes>
-					</MenuProvider>
-				</RestaurantProvider>
+				<Routes>
+					<Route path="/:slug/menu" element={<MenuPage />} />
+					<Route element={<PageLayout />}>
+						<Route path="/" element={<Home />} />
+						<Route path="/login" element={<LoginPage />} />
+						<Route path="/register" element={<RegisterPage />} />
+						<Route path="*" element={<Navigate to="/" replace />} />
+					</Route>
+					<Route element={<AdminPageLayout />}>
+						<Route path="/dashboard" element={<DashboardPage />} />
+						<Route path="/dashboard/restaurant" element={<RestaurantPage />} />
+						<Route path="/dashboard/add-restaurant" element={<EditRestaurantPage />} />
+						<Route path="/dashboard/edit-restaurant" element={<EditRestaurantPage />} />
+						<Route path="/dashboard/menu" element={<MenuItemsPage />} />
+						<Route path="/dashboard/add-item" element={<EditItemPage />} />
+						<Route path="/dashboard/edit-item/:id" element={<EditItemPage />} />
+						<Route path="/dashboard/qr-code" element={<QRCodePage />} />
+						<Route path="/dashboard/account" element={<UserPage />} />
+						<Route path="/dashboard/edit-account" element={<EditUserPage />} />
+						<Route path="/dashboard/*" element={<Navigate to="/dashboard" replace />} />
+					</Route>
+				</Routes>
 			</UserProvider>
 		</Router>
 	)
