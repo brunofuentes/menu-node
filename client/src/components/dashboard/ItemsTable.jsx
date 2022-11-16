@@ -1,23 +1,23 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router'
-import RestaurantContext from '../../context/RestaurantContext'
 import './ItemsTable.css'
 
 function MenuData(props) {
 	let navigate = useNavigate()
-	const { items, setItem, DeleteMenuItem, GetMenuItemData } = useContext(RestaurantContext)
+	const { items, onDeleteItem } = props
 
 	function handleAddNewItem() {
-		setItem(null)
 		navigate('/dashboard/add-item')
 	}
 
 	function handleDelete(id) {
-		window.confirm('Are you sure you want to delete this item from your menu?') && DeleteMenuItem(id)
+		const confirmed = window.confirm('Are you sure you want to delete this item from your menu?')
+		if (confirmed) {
+			onDeleteItem(id)
+		}
 	}
 
 	function handleEdit(id) {
-		GetMenuItemData(id)
 		navigate(`/dashboard/edit-item/${id}`)
 	}
 

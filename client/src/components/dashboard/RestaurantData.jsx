@@ -1,20 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router'
-import RestaurantContext from '../../context/RestaurantContext'
-import LoadingSpinner from '../LoadingSpinner'
 
 function RestaurantData(props) {
 	const navigate = useNavigate()
-	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
 
-	GetRestaurantData(props.restId)
+	const { restaurant } = props
 
 	function handleClickEdit() {
 		navigate('/dashboard/edit-restaurant')
-	}
-
-	if (!restaurant) {
-		return <LoadingSpinner />
 	}
 
 	return (

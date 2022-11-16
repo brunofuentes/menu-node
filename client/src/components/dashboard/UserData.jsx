@@ -1,16 +1,14 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import RestaurantContext from '../../context/RestaurantContext'
 import UserContext from '../../context/UserContext'
+import useGetRestaurantData from '../../data/use-get-rest-data'
 import LoadingSpinner from '../LoadingSpinner'
 
 function UserData() {
 	const navigate = useNavigate()
 
 	const { user } = useContext(UserContext)
-	const { restaurant, GetRestaurantData } = useContext(RestaurantContext)
-
-	GetRestaurantData(user?.restaurant_id)
+	const { restaurant } = useGetRestaurantData(user?.restaurant_id)
 
 	const handleClickEdit = () => {
 		navigate('/dashboard/edit-account')

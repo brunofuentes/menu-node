@@ -1,18 +1,35 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import EditRestaurantForm from '../../components/dashboard/EditRestaurantForm'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import UserContext from '../../context/UserContext'
+import api from '../../services/api'
+import useGetRestaurantData from '../../data/use-get-rest-data'
 
 function EditRestaurantPage() {
+	const navigate = useNavigate()
+
 	const { user } = useContext(UserContext)
+	const { restaurant } = useGetRestaurantData(user?.restaurant_id)
+
+	function handleUpdateRestaurant(restId, formData) {
+		api.updateRestaurantData(restId, formData).then(() => {
+			navigate('/dashboard/restaurant')
+		})
+	}
+
+	function handleCreateRestaurant(user, formData) {
+		api.createRestaurant(user, formData).then(() => {
+			navigate('/dashboard/restaurant')
+		})
+	}
 
 	if (!user) return <LoadingSpinner />
-	else if (!user?.restaurant_id)
+	if (!user?.restaurant_id)
 		return (
 			<div>
 				<h1>Cadastrar restaurante:</h1>
-				<EditRestaurantForm />
+				<EditRestaurantForm user={user} onCreateRestaurant={handleCreateRestaurant} />
 			</div>
 		)
 	return (
@@ -28,7 +45,11 @@ function EditRestaurantPage() {
 					<span>Voltar</span>
 				</div>
 			</Link>
-			<EditRestaurantForm restId={user?.restaurant_id} />
+			<EditRestaurantForm
+				restaurant={restaurant}
+				restId={user?.restaurant_id}
+				onRestaurantUpdate={handleUpdateRestaurant}
+			/>
 		</div>
 	)
 }

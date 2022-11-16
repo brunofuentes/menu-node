@@ -3,17 +3,24 @@ import ItemsTable from '../../components/dashboard/ItemsTable'
 import { Link } from 'react-router-dom'
 import UserContext from '../../context/UserContext'
 import LoadingSpinner from '../../components/LoadingSpinner'
-import RestaurantContext from '../../context/RestaurantContext'
+import useGetItemsData from '../../data/use-get-items-data'
+import api from '../../services/api'
 
 function MenuItemsPage() {
 	const { user } = useContext(UserContext)
-	const { GetMenuData } = useContext(RestaurantContext)
+	const { data, refetch } = useGetItemsData(user?.restaurant_id)
 
-	GetMenuData(user?.restaurant_id)
+	function handleDeleteItem(itemId) {
+		api.deleteMenuItem(itemId).then(() => {
+			refetch()
+		})
+	}
 
 	if (!user) {
 		return <LoadingSpinner />
-	} else if (!user?.restaurant_id) {
+	}
+
+	if (!user?.restaurant_id) {
 		return (
 			<div>
 				Parece que você ainda não tem um restaurante cadastrado. Cadastre{' '}
@@ -22,13 +29,13 @@ function MenuItemsPage() {
 				</span>
 			</div>
 		)
-	} else {
-		return (
-			<div>
-				<ItemsTable restId={user?.restaurant_id} />
-			</div>
-		)
 	}
+
+	return (
+		<div>
+			<ItemsTable items={data.items} onDeleteItem={handleDeleteItem} />
+		</div>
+	)
 }
 
 export default MenuItemsPage

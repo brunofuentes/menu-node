@@ -1,13 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import RestaurantContext from '../../context/RestaurantContext'
 
 function EditItemForm(props) {
-	const navigate = useNavigate()
-
-	const { item, CreateMenuItem, UpdateMenuItem } = useContext(RestaurantContext)
-
+	const { item, sections, onItemUpdate, onCreateItem } = props
 	const {
 		register,
 		handleSubmit,
@@ -26,12 +21,11 @@ function EditItemForm(props) {
 		formData.append('file', data.file[0])
 
 		if (item) {
-			UpdateMenuItem(formData, item.id)
+			onItemUpdate(item.id, formData)
 		}
 		if (!item) {
-			CreateMenuItem(formData)
+			onCreateItem(formData)
 		}
-		navigate('/dashboard/menu')
 	}
 
 	return (
