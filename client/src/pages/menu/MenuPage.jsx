@@ -1,20 +1,21 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
-import MenuContext from '../../context/MenuContext'
 import DynamicNavbar from '../../components/menu/DynamicNavbar'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import MenuItem from '../../components/menu/MenuItem'
+import useGetMenuData from '../../data/use-get-menu-data'
 
 function Menu() {
 	const { slug } = useParams()
-	const { restaurant, menuItems, GetMenuRestaurantData } = useContext(MenuContext)
 
-	GetMenuRestaurantData(slug)
+	const {
+		data: { restaurant, items },
+	} = useGetMenuData(slug)
 
 	let sections = []
-	menuItems.map((item) => (sections.includes(item.section) ? null : sections.push(item.section)))
+	items.map((item) => (sections.includes(item.section) ? null : sections.push(item.section)))
 
-	if (menuItems.length < 1) {
+	if (items.length < 1) {
 		return <LoadingSpinner />
 	} else {
 		return (
@@ -42,7 +43,7 @@ function Menu() {
 									{section}
 								</h2>
 								<div>
-									{menuItems.map(
+									{items.map(
 										(item, item_index) =>
 											item.section === section && (
 												<div key={item_index}>
