@@ -8,7 +8,7 @@ function QRCodePage() {
 	const { user } = useContext(UserContext)
 
 	if (!user) return <LoadingSpinner />
-	else if (!user?.restaurant_id)
+	if (!user?.restaurant_id)
 		return (
 			<div>
 				Parece que você ainda não tem um restaurante cadastrado. Cadastre{' '}
